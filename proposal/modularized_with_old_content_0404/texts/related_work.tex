@@ -1,0 +1,105 @@
+\section{Related Work}
+In this chapter, we discuss the existing methods and state of the art.
+\info[inline]{But it is essential to understand that the method and level of accuracy required is mostly application dependent.}
+\improvement{add what each section does}
+
+\subsection{Statistical Data analysis of RSSI values}
+The analysis of the received signal strength values could lead to better understanding of features and patterns for a particular fingerprint \thiswillnotshow{from which an appropriate model could be used}. Previously studies were based on RSSI and were mainly directed towards communication technologies rather than positioning systems, hence a clearer knowledge and analysis of this would lead to better modeling and design of positioning systems\cite{kaemar}. The RSSI values suffer attenuation due to reflection, refraction, multipath effect, number of people, indoor environment[Hightower et al, Location Sensing Techniques, A Technical report, 2001], orientation of phones\improvement{(using the compass), for experiments} and quality of BLE chip in the MU's. One more  \cite{deluca}. There's always a trade-off between number of access points and signal interference, but even with the increase in nodes there is an irreducible error due to power measurement noise and quantization, hence can't be reduced below a certain value. Its also because of movement of people and MUs, there is time-correlated fluctuation of RSSI, which sometimes severely affect the performance of positioning solutions\cite{kaemar}.
+
+The different ways of measuring the RSSI values, one, the measurement has standard deviation of 2.5 dBm while the phone was held still.\improvement{add the rotating and cardinal directions.} The presence of human widely varied the signal strength values \improvement{how much and cite it}. But according to \cite{kaemar}, the consideration phone orientation didn't improve the accuracy much. 
+
+\subsubsection{Preprocessing and Manipulation of RSSI values}
+From \cite{honkavirta}, for multiple measurements recorded at a single time step, generally the mean of all measurements is taken into consideration.
+
+\noindent
+\subsubsection{How hardware effects the measurement of RSSI values?}
+The effects of MU's hardware can be useful in estimating the measurement noise and modeling the same, it was seen that variation was 5dBm across different devices.\cite{deluca}
+
+\subsubsection{Modeling based on variation in RSSI values}
+The probability distribution of RSSI is a function of location of time as the indoor setting is extremely convoluted. This leads to bimodality and asymmetric nature, hence modeling a better data model is daunting task. The skewness of the RSSI values depends on the distance and presence of obstacles leading to either left or right skewness, or sometimes it could also be symmetric. The left-skewness of the RSSI which is due to large variation of smaller values than information rich higher values values and these are modeled as log-normal distribution [Honkavirta et al, 2009]. It is also approximated using Gaussian distribution or exponential distribution. The limitation of smartphone in registering low signal values and quantization also exacerbates this problem. 
+
+\subsection{RSS based Localization Algorithms}
+\subsubsection{Triangulation} 
+
+Triangulation includes methods like Lateration and Angulation, which are described. This method requires estimates from at least three different known sources.
+
+\begin{itemize}
+\item \textbf{Lateration}
+Lateration\cite{liu} accomplishes the position estimation problem by measuring the distances from known reference points, hence it is also called \textbf{range measurement technique}. Most of the times distance is indirectly measured via either received signal strength(RSS), time of arrival(TOA) or time difference of arrival(TDOA). TOA works on the principle that time and distance positively correlate with each other and given one other can be estimated. But care has to be taken that transmitter and receiver are properly synchronized. TDOA works on time difference of time taken by different measurement devices for receiving the signal. Signal attenuation based models(RSS) try to learn the path loss component due to propagation as the signal in indoor setting is degraded due to multipath fading. Other methods include roundtrip-time-of-flight(RTOF) and received signal phase method. These methods could be used in conjunction with each other to better the accuracy.
+
+\noindent
+\textbf{Drawbacks in Lateration:} Multi path and lack of line of sight complicates the problem in TOA, TDOA and Signal attenuation based methods. The location of nodes should be known beforehand.
+
+\item \textbf{Angulation} : The location estimate is found out using finding angle of the target along some fixed reference with at least two known nodes.
+
+\noindent
+\textbf{Drawbacks in Angulation:} Need expensive, large and complicated hardware equipment. This method also suffers from multipath reflection.
+\end{itemize}
+
+\subsubsection{Static Scene Analysis(Fingerprinting)}
+
+Scene Analysis involves inferring based on features already recorded for a particular location and static scene analysis looks up into a pre-recorded dataset which maps locations with it features\cite{hightower}. Hence, it is also called Fingerprinting as it aims at creating unique feature map based on location dependent measurements. This method involves matching the measured signal with location-dependent ground truth signal. To obtain the ground truth signal, some pre-defined points called \textbf{reference points} \improvement{my defintion of radio-map} are selected and RSSI measurements are recorded from all the available nodes. These ground truth measurements/pre-recorded dataset with location tag is called \textbf{reference table}. The reference table can be used to create a radio-map unlike \cite{honkavirta}.\unsure{check this out, } This can be done either with a simple pathloss interpolation or Gaussian process regression.  This reference table in conjunction with test measurements can be used with deterministic or probabilistic methods for obtaining the location estimate\cite{liu}. \cite{mazzullah} calls this method as template matching algorithm, with reference table and test measurements data called as offline and online data respectively. \cite{honkavirta} calls the offline phase as calibration phase. These data can also be used in sequential Monte Carlo methods like Bayesian Filters (Grid Filter, Kalman Filter, Extended Kalman Filter, Unscented Kalman Filter, Particle Filter) in conjunction with Gaussian Processes both simple and Latent Variable Models or k-Nearest Neighbors.
+
+\vspace{3mm}
+\noindent \textbf{For the construction of radio map,} most of the authors have recorded the measurements keeping their MU's still but \cite{honkavirta} have rotated at the given position while recording the measurements to minimize the orientation bias and at the same time they have increased the calibration time to maximize the reliability of the measured data\cite{??}. These have also been recorded in the four different cardinal directions\cite{richter}.This goes in-line with \cite{??} which advocates more the samples better the fingerprint during calibration phase. \cite{honkavirta} splits the floor into cells and assumes the likelihood to be constant inside the cell and in addition also uses methods like histogram and histogram comparison.
+\noindent
+
+Advantages of scene analysis over other methods is that it doesn't require any additional information about the devices in contrast to triangulation methods like time-of-flight, time-difference of flight where extra synchronization is essential and in conjunction with GP's it is scalable\cite{hightower}.
+
+\textbf{Few observation about Calibration phase}: Calibration time more than 10 secs doesn't help. And also increasing in AP's doesn't increase accuracy beyond some point. The Grid size for calibration depends on the floor plan and location of the access points. 
+
+\noindent
+In simple Gaussian process(GP) model, we use simple GP regression to predict the RSSI values at the other locations and then use a simple Gaussian model for evaluating the likelihood model. One major advantage of using semi-parametric model is that with enough evidence the non-parametric counterpart can override the parametric one\cite{richter}.
+
+
+
+\improvement{what is the learning when we are using k-NN?} \\
+
+
+
+\textbf{What methods have been used?}
+[Mazzullah Khan et al,2017] have used pathloss measurement model in Unscented Kalman Filter in conjunction with weighted kNN(WKNN).  \improvement{add online and offline method}
+
+
+
+
+One of the drawbacks for Gaussian process latent variable models(GP-LVM) is that it requires unique and information-rich measurements, hence limits it's applicability \improvement{which paper?} \\
+
+\textbf{Drawbacks of Fingerprinting}: When the indoor setting is restructured or locations of AP's is changed then the current radio-map would become redundant, needing a new radio-map[Yiu et al, 2016].
+
+
+
+\thiswillnotshow{\subsubsection{Proximity detection}}
+\thiswillnotshow{\subsubsection{Cell based methods}}
+
+\subsection{Challenges with  RSS based methods}
+ \begin{enumerate}
+ \item Multipath and fading. 
+ \item Movement of user causes fluctuation called small scale fading\cite{??}.
+ \item Heavy interference due to 2.4 GHz license-free frequency which is also used by cordless phones, bluetooth devices, WiFi signals and microwaves. \cite{kamath}
+ \item Signal attenuation based on presence of number of people. This is because human bodies are bags of waters which can adsorb signals. \cite{kamath}
+ \item Absence of ping from any BLE device due to malfunction can effect the positioning accuracy. \colorbox{yellow}{\parbox{1\textwidth}{Usually, the unheard devices are set to their minimum power device sensitivity level\cite{yiu}and similarly even the test data is given the same treatment.}}
+ 
+ \item  \colorbox{yellow}{\parbox{1\textwidth}{Inaccuracies due to multipath fading can be mitigated using spatial and temporal patterns \cite{he}. This method will find the correlation between positional data and walking trajectory, internal building structure and nodes location (ANOLI).}}
+ \end{enumerate}
+ 
+
+\subsection{Signal Technologies used for Indoor Positioning}
+In general location estimation scenario, Global Positioning system(GPS) is widely used technology for outdoors. For indoors, technologies like Infra-red, ultrasonic, radio-frequency, optical systems\cite{umar}, visual light communication. \thiswillnotshow{frequency modulation signal and mobile cellular newtork}   
+
+\subsection{Applications of Indoor Positioning}
+
+
+\begin{enumerate}
+\item \textbf{Asset tracking}: Tracking an asset based on reference signal sent by the asset.
+\item \textbf{Personalized recommender engines}: Based on the location data from a store, personal recommendations can be sent to users. 
+
+\end{enumerate} 
+
+\subsection{Performance Metric for Localization Systems}
+Similar to [Honkavirta et al, 2009], the mean of the norms(ME), median. RMSE, maximum and 95\% confidence interval.
+
+\thiswillnotshow{The Fingerprinting method are widely used in IP. This method includes recording a unique fingerprint and then a fingerprint matching \unsure{sequential and non-sequential} algorithm is run to estimate the location indoors\cite{fang}. \improvement{add method used  first in order}}
+
+
+\noindent

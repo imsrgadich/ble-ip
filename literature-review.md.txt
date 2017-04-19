@@ -1,0 +1,42 @@
+## **Survey of Wireless Indoor Positioning Techniques and Systems: Liu et al, 2007**
+
+**Qualitative and (sometimes) quantitative overview of all the different positioning methods**
+
+- three major types of location estimation methods namely, triangulation, scene analysis and proximity based. 
+- Indoor positioning provides new layer of automation called automatic object location detection.
+- Formally, the estimation of location using wireless technologies is called location sensing, geo-location, position location or radio-location.
+- Types of location: 
+	> physical location - coordinates, x, y and probably z as well. Might as well use DMS, degree/minutes/seconds.   
+	> symbolic location - human way of communicating location, e.g., third floor bedroom.   
+	> absolute location - "shared reference grid for all located objects" *unsure*     
+	> relative location - "proximity" to known reference points/base station"   
+- Wireless technologies for IP can be classified based on 
+	> type of measurement collected for the Positioning algorithm, like, time of flight(TOF), angle, or received signal strength indicator(RSSI)
+	>  sensor structure(?) and type of communication between them. 
+
+#### Measuring Principles and Positioning algorithms
+
+Signal indoor suffers from multipath and less possibility line-of-sight  
+
+1. Triangulation 
+	- Lateration: uses properties of triangles. Position estimation by measuring the distances from reference points. Also called range measurement techniques. Most of the distance is indirectly measured using either received signal strength(RSS), time of arrival(TOA) or time difference of arrival(TDOA). [roundtrip time of flight(RTOF)?] 
+		- TOA: can be used for **asset tracking**. Least squares algorithm.
+		- TDOA: 
+	- Angulation:  This method computes angle between device and all the reference points.
+
+2. Scene Analysis: method based on location fingerprint
+	- 
+
+#### Application
+
+1. pin-pointing the product location in warehouse.
+2. asset tracking, can be personnel tracking in a hospital.
+3. locating the personnel in danger zones.
+
+
+#### Future work.
+- self organizing sensor network
+-  location sensitive billing
+-  ubiquitous computing
+-  context-dependent information services
+-  tracking and guiding

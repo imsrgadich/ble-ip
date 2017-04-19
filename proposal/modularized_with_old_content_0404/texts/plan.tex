@@ -1,0 +1,53 @@
+\section{Plan}
+
+
+\subsection{Experiments:} 
+
+\subsubsection{Data Analysis of RSSI values.} \label{exp-rssi}
+\begin{enumerate}
+\item Different Biases in RSSI measurements
+\begin{itemize}
+\item User's presence and without user's presence.
+\item Different phones.
+\item Different orientation of phones, angles, height? 
+\item Different material of luminaires.(metal, plastic, metal+plastic). Its an added bonus if we can get the different luminaire material information from the BLE signal.
+\item Different orientation of BT chip (cardinal directions and upwards and downwards)
+\item Different calibration time for fingerprinting.
+\item Different calibration points.
+\item Fingerprint measuring while being still, only in 4 cardinal positions and while rotating.
+\end{itemize}
+\item With nearest node not working.
+\item Experiment with different orientation of the mobile device. Hypothesis is that the there is 5 dBm difference for the change in orientation \cite{kaemar}.
+\end{enumerate}
+
+\subsubsection{Methods} 
+Next, based on the results of the experiments above implement the methods described in the \ref{methods}.
+
+\thiswillnotshow{
+\section{Observations:}
+\begin{enumerate}
+\item The signal strengths from the nodes
+\end{enumerate}}
+
+\FloatBarrier
+\begin{table}[H]
+\centering
+\caption{Plan for the thesis}
+\label{tab-plan}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Month}                   & \textbf{Task}                      & \textbf{Remarks}                                                                           \\ \hline
+February                         & REST API                  & Completed                                                                         \\ \hline
+\textbf{Meeting 1}               & Slides:     &  \url{https://goo.gl/Up9ejx}                                                                                 \\ \hline
+March                            & Literature Review         & \shortstack[l]{1. Made extensive notes of the reading \\2. Will move it to thesis \\ 3. Made plan.} \\ \hline
+                                 & \textbf{Phase 1}          &                                                                                   \\ \hline
+April \& May                      & Get better model:       & Influence of various biases; Experiment in \ref{exp-rssi}                         \\ \hline
+June: week 23, 24                & Buffer period for 2 weeks & End of Phase 1                                                                    \\ \hline
+                                 & \textbf{Phase 2}          &                                                                                   \\ \hline
+\shortstack[l]{June: week 25, 26\\July: week 27} & Methods                   & Non-memory based methods. As discussed in \ref{methods}:                          \\ \hline
+\shortstack[l]{July: rest \\August}              & Methods                   & Memory based methods                                                              \\ \hline
+                                 & \textbf{Phase 3}          &                                                                                   \\ \hline
+September                        & Writing                   & Compile results, write it to thesis, and survey paper.                         \\ \hline
+October & \\Novemeber            & Writing                   & Polish the thesis,comments from instructor and supervisors.                       \\ \hline
+\end{tabular}
+\end{table}

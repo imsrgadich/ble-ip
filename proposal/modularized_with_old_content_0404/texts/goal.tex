@@ -1,0 +1,30 @@
+\section{Goal of the thesis: Description}
+\begin{enumerate}
+\item \textbf{Automatic Node Location Identification(ANOLI):}
+\begin{addmargin}[0em]{0em}% 1em left, 2em right
+This task involves finding the locations of the beacons intelligently. Currently, Active Aheads, can read the RSSI values from all the other beacons, so, we need to employ an Machine Learning method for creating a topology of sensors. This task can also be named Self Organizing Sensor Network. The feasibility study is yet to be done but the main idea here is that combining the data from all the sensors and create a topology of sensors and get metadata out of it. This metadata would include to which cluster the particular sensor would belong to, clusters relative position to some landmark location, etc. \cite{raivisto} \\
+So, we will have 2 weeks after the commissioning of the luminaires. 
+
+\end{addmargin}
+
+\item \textbf{Develop an algorithm for Bluetooth Low Energy Indoor Positioning(BLE-IP):}
+\begin{addmargin}[0em]{0em}% 1em left, 2em right
+In this task we want to find the position of a subject given the received signal strength indicator(RSSI) from the BLE beacons. This method would also make use of the information gained during the previous task. So, the idea here is that the metadata is loaded in to the mobile application, and when it starts reading the signal and it will relate the particular MAC(media access control) address to the topology and be used in the memory and non-memory methods. This metadata could also include the current sensor data, and the plan is to integrate as much data as possible for getting better accuracy. There is also conscious effort to make the application have less/no dependency on the internet. \\
+The first task would be to understand the different biases via experiments so as to build a broad model which could be used in variety of environments. Then the different methods are deployed to check the accuracy based on that.\\
+
+\textbf{Challenges:}
+Need to deal with the different sampling frequencies of different AP's(BLE, WIFI) or smart-phone sensors in the algorithm [Check balzer82 github page or check Torres-Sospedra et al, 2.3, Para 2]
+\end{addmargin}
+\thiswillnotshow{
+\item \textbf{Other tasks}:
+\begin{enumerate}
+\item \textbf{Applications:}
+\begin{itemize}
+\item \textbf{Asset tracking} could be accomplished. It includes a BLE device which sends out an advertisement signal which is read by the BLE devices in the mesh network for tracking its location. This is an inspiration\unsure{check this}  from Active Bat Localization System which uses Ultrasound\cite{hightower} \change{??} rather than bluetooth. Here, the bat is indoor mobile tags, similar to an asset.  
+\end{itemize}
+\item  \textbf{Pattern Recognition}: Another task would be to use the positioning data with other sensor data from smartphone over a period of time to learn spatial and temporal patterns\cite{he}. \info{check the IP\_LiFs\_MDS slides}
+\
+(Fingerprinting, radio map,..)
+\end{enumerate}}
+
+\end{enumerate}

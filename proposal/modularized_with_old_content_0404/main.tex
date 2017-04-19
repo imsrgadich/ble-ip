@@ -1,0 +1,230 @@
+\documentclass[a4paper,draft]{article}
+\usepackage{scrextend}
+%% for stopping floats
+\usepackage{placeins}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm,headheight=55pt]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+%% For todo 
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[obeyDraft,colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+%% todo ends
+
+%% for strike out, normalem
+\usepackage[normalem]{ulem}
+%% strike out ends
+
+%% for line break in colorbox
+\usepackage[]{tcolorbox}
+
+
+%% no float table
+\usepackage{float}
+\restylefloat{table}
+
+%% for header
+%\usepackage{fancyhdr}
+
+%%\usepackage[headheight=55pt]{geometry}
+
+%\renewcommand{\headrulewidth}{2pt}
+%\fancypagestyle{plain}{%
+%  \fancyhead[L]{
+%    \begin{tabular}{ll}
+%%      \begin{tabular}[t]{c}
+%        %\includegraphics[scale=0.3]{beeduck}%
+%      \end{tabular} &
+%      \begin{tabular}[b]{l}
+%        \unsure{unsure} \change{change} \info{info} \improvement{improve}
+%        Head of Department: The Bee Duck\tabularnewline
+%        Vice chairmen: The Duck Bee\tabularnewline
+%      \end{tabular}
+%    \end{tabular}   
+%  }%
+%}
+
+\pagestyle{plain}
+%% end header
+
+% for extra sub section
+\usepackage{titlesec}
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+% end e-s section
+
+%% 	mind map 
+%%\usepackage{epsfig}
+\usepackage{tikz}
+\usetikzlibrary{mindmap,backgrounds}
+%% end mind map
+
+
+\newcommand{\blap}[1]{\smash[b]{\begin{tabular}[t]{@{}c@{}}#1\end{tabular}}}
+
+\title{Scene Analysis based Bluetooth Low Energy Indoor Positioning Methods\\ \textnormal{Master's Thesis Proposal} \textnormal{v0.4}}
+\author{Srikanth Gadicherla}
+
+\begin{document}
+\maketitle
+\renewcommand{\arraystretch}{1.5}
+\thiswillnotshow{ \input{texts/abstract} }
+
+
+\input{texts/goal}
+\input{texts/intro}
+\input{texts/related_work}
+\input{texts/work_done}
+\input{texts/methods_materials}
+\input{figures/mind_map}
+\input{texts/plan}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.3\textwidth]{frog.jpg}
+%\caption{\label{fig:frog}This frog was uploaded via the project menu.}
+%\end{figure}
+
+\begin{thebibliography}{9}
+
+\bibitem{fang}
+Yeqing Fang, Zhongliang Deng, Chen Xue, Jichao Jiao, Hui Zeng, Ruoyu Zheng, Shunbao Lu, “\textit{Application of an Improved K Nearest Neighbor Algorithm in WiFi Indoor Positioning},” China Satellite Navigation Conference(CSNC), 2015 Proceedings: Volume III2015342, Berlin, Germany, Springer 517524, Lecture Notes in Electrical Engineering, 10.1007/978-3-662-46632-$2\_45$, doi:10.1155/2014/649276
+
+
+
+\bibitem{yuan}
+Xianghui Yuan, Feng Lian, and Chongzhao Han, “\textit{Models and Algorithms for Tracking Target with Coordinated Turn Motion},” Mathematical Problems in Engineering, vol. 2014, Article ID 649276, 10 pages, 2014. doi:10.1155/2014/649276
+
+\bibitem{liu}
+H. Liu, H. Darabi, P. Banerjee and J. Liu, “\textit{Survey of Wireless Indoor Positioning Techniques and Systems},” IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews), vol. 37, number 6, 1067-1080 pages, Nov 2007, doi:10.1109/TSMCC.2007.905750
+
+\bibitem{yiu}
+Yiu, H. Darabi, P. Banerjee and J. Liu, “\textit{Locating User Equipment and Access Points using RSSI fingerprints},” IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews), vol. 37, number 6, 1067-1080 pages, Nov 2007, doi:10.1109/TSMCC.2007.905750
+
+\bibitem{kamath}
+Arjun. P. Kamath,"\textit{Indoor Location-Based Services In The Telecommunications Network}", Master Thesis, Department of Communications and Networking, School of Electrical Engineering, Aalto University, 2014.
+
+\bibitem{ferris}
+B. Ferris, D. Fox, and N. Lawrence. WiFi SLAM Using Gaussian Process Latent Variable Model. In JCAI, January 2007.
+ 
+\bibitem{kontact}
+Beacon, link: https://store.kontakt.io/our-products/30-double-battery-beacon.html.
+ 
+\bibitem{max}
+Discussion with Max Bj\"orkgren on 9th March.
+ 
+\bibitem{martin}
+Martin Sauter (2010). "3.7.1 Mobility Management in the Cell-DCH State". From GSM to LTE: An Introduction to Mobile Networks and Mobile Broadband (eBook). John Wiley \& Sons. p. 160. ISBN 9780470978221.
+
+\bibitem{geospatial}
+ http://www.geospatialworld.net/wp-content/uploads/magazine/Geospatial-World-August-2014.pdf.
+
+\bibitem{raivisto}
+ Discussion with Tommi Raivisto on 16th March.
+
+\bibitem{ble-ip-proj}
+ Project done for the course CS-E4030 - Seminar on Gaussian processes, School of Science, Aalto University.
+ 
+\bibitem{he}
+Suining He, S.-H. Gary Chan. \textit{"Wi-Fi Fingerprint-based Indoor Positioning:Recent Advances and Comparisons"}, IEEE Communications Surveys and Tutorials, 2015.
+
+\bibitem{kaemar}
+Kaemarungsi et al, Analysis of WLAN’s received signal strength indication for indoor location fingerprinting,2011
+
+\bibitem{richter}
+Philipp Richter, Revisiting Gaussian Process Regression Modeling for Localization in Wireless Sensor Networks, 2015.
+ 
+ \bibitem{honkavirta}
+ Honkarvirta et al, 2009; Prasithsangaree et al, 2002
+ 
+ \bibitem{deluca}
+ De Luca et al, Performance evaluation of Indoor Localization Techniques Based on RF Power measurements from Active or Passive Devices.
+ 
+\bibitem{hightower}
+Hightower et al, Location Sensing Techniques, A Technical report, 2001
+
+\bibitem{mazzullah}
+Mazzullah Khan et al,2017
+
+\bibitem{umar}
+Umar Ahmad, iBeacon Localization, Master Thesis.
+
+\bibitem{smailagic}
+Smailagic et al, 2002
+
+\bibitem{prasithsangaree}
+Prasithsangaree et al, 2002
+
+\bibitem{torres-sospedra}
+Torres-Sospedra et al, A realistic evaluation of indoor positioning systems based on Wi-Fi fingerprinting, 2017
+
+\bibitem{nurminen}
+Nurminen et al, Particle Filter and smoother for Indoor localization,2013
+
+\end{thebibliography}
+
+
+\end{document}

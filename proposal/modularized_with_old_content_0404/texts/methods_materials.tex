@@ -1,0 +1,18 @@
+\section{Methods and Materials}
+
+\subsection{Methodology in the thesis}
+
+The methods used in the thesis would be based on methods and models. Models could be either based on either Gaussian Processes(GP) or Pathloss model. Gaussian processes can be used both during the fingerprinting phase or as the measurement likelihood(or data) model. Pathloss model could be inaccurate as the signal suffers from multiple attenuations indoors so inclusion of prior knowledge is crucial here. So the pathloss model is used in conjunction with either GP as the mean function \cite{yiu}, some intelligent mapping between physical state space and signal space\cite{smailagic} or interpolation for improvement in the accuracy \cite{prasithsangaree}. 
+
+
+\subsubsection{Different kinds of Methods} \label{methods}
+\begin{enumerate}
+\item \textbf{Non-memory based methods}:
+These methods are deterministic or intelligent methods which try to relate the spatial space with the signal space. These methods are Trilateration/ Triangulation, k-Nearest Neighbors, Artificial Neural Networks etc. These methods estimate directly based on the RSSI values with no knowledge about the previous state or previous measurements, hence the name Non-memory based methods.
+ 
+\item \textbf{Memory based methods (or Sequential Monte Carlo)}:
+By adding a dynamic model or the prior to the non-memory based methods we arrive at Memory  based methods which are also called Sequential Monte Carlo based methods. The non-memory based methods are used as the measurement model, hence combining with the prior knowledge we arrive at the posterior or state estimate. There are different dynamic models used like stationary state model and constant velocity model(Bearing only Tracking; BOT) \cite{honkavirta}, the Augmented Coordinated Turn model could also be used to include the heading. Then, the sensor data like compass have to be include to get a better of this. 
+
+Particle filters can be initialized using the location of node which gives highest RSSI \cite{honkavirta} value in conjunction with motion detection data using PIR sensors. And, also the particle filter could only be advanced when an event from the accelerometer is detected rather than updating it always \cite{torres-sospedra}. In other case, the particle states included the position, step length and heading offset with constant number of particles, so the individual particles were moved according to estimated step length and heading angle \cite{nurminen}. Calibrated Orientation sensor or compass for direction in which the person is moving\cite{torres-sospedra} shows that gyroscope and compass together can be used for this purpose.
+
+\end{enumerate}
