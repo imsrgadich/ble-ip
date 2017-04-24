@@ -22,7 +22,8 @@
 > same question as above.
 - Remove heading for Section 5.1 (no Section 5.2)
 > same question as above.
-- My comments for Section 5 have not been addressed (there's a table and there's a list of experiments, but no description/putting them into context)
+- <strike>My comments for Section 5 have not been addressed (there's a table and there's a list of experiments, but no description/putting them into context).</strike>
+> description added. 
 - <strike>In the experiment description, avoid sentences like 'We would like'. Be straight forward what the objectives are: 'Investigate the effect of user presence on the RSS values'</strike>
 - There are still many incomplete references 
 > Intentionally, left this due to lack of time. I have record of papers. I will use them in the thesis.
