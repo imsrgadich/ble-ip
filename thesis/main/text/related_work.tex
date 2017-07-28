@@ -1,0 +1,67 @@
+\chapter{Related work or Location Fingerprinting}
+
+In this chapter, background on the indoor positioning methods would be presented. The chapter begins with the section \ref{2_rssi_data_analysis}, where in detailed discussion on data analysis of the RSSI values is provided. Section \ref{2_ind_pos} discusses the various methodology used previously. Section \ref{2_bayes_filter} talks how Bayesian Filters and Sequential Monte Carlo methods [\textbf{FixMe: should we add \ref{2_bayes_filter} and \ref{2_gp} to \ref{2_ind_pos}}]. Section \ref{2_bayes_filter} describes the Bayesian Filtering techniques. Section \ref{2_gp} provides the applications of Gaussian Processes and the state-of-the-art indoor positioning methods.
+
+Before we start exploring the different methods for solving the indoor positioning problem, the initial challenge lies in getting the right data model as the RSSI values vary due to various external factors like [\textbf{FixMe: add factors here or refer to previous sections}]. 
+
+The probabilistic nature of our positioning solution would allow seamless integration of inertial sensor data for increased performance.
+
+%% Osan hienojaottelua alaosiin, eikä välttämättä edes tarpeen,
+%% tässä vain esimerkkinä. Käytä harkintasi mukaan
+%% osan jaottelua, joskus alaotsikot selventävät asioita ja
+%% joskus vain sirpaloittavat tarpeettomasti tekstiä.
+%%  Jaottelu menee seuraavasti:
+%% \section{osan otsikko} 
+%% \subsection{alaotsikko}
+%% \subsubsection{ala-alaotsikko}
+%% Tätä pitemälle ei pidä jaotella. 
+%%
+%% Three levels of hierarchy in sectioning should be enough
+
+\section{Data Analysis of RSSI values} \label{2_rssi_data_analysis}
+
+\section{Positioning Algorithms} \label{2_ind_pos}
+
+The radio-signals based indoor positioning can be categorized as time-based, angle based and signal-strength based \citep{atia}
+
+The indoor positioning algorithm's are usually mostly modeled either using Pathloss  or Gaussian process model. \fixme{add citation}
+
+%%\input{figures/mind_map}
+
+
+\section{Bayesian Filtering} \label{2_bayes_filter}
+
+%% esimerkki pakkotavutuksesta; "serif-tyyppinen" on tavutuksen kannalta
+%% hankala, joten pakkotavutetaan se. 
+
+
+%% Esimerkki taulukosta
+\begin{table}[htb]
+%% Taulukon teksti
+        \caption{I'm your sample table \label{taulukko1}}
+\begin{center}
+\fbox{
+\begin{tabular}{c|l|r}
+\textbf{A} & 1 & $e^{j \omega t}$ \\ \hline
+\textsf{B} & 2 & ${\mathfrak R}(c)$ \\ \hline
+\texttt{C} & 3 & $ a \in \mathbb{A}$  
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+%% Jos käännät tämän tekstin pdflatex-komennolla ja tulostat sen katselu-
+%% ohjelmasta, toteat todennäköisesti em. mittojen poikkeavan enemmän
+%% kuin 1-2 mm. 
+%% Tämä on seurausta pdf-tiedoston erilaisesta kirjaintyyppimäärityksestä.
+%% Korkeatasoista painotyötä varten käytä vain latex-komentoa ja 
+%% tulosta postscript-muotoon käännetystä tiedostosta. 
+\section{Gaussian Processes} \label{2_gp}
+
+Gaussian processes (GPs) are extensively used semi-parametric \footnote{going by the definition of basic GP, mean of Gaussian is non-parametric, but the conditional distribution is Gaussian, i.e, parametric.} modelling techniques 
+
+
+
+
+
+\clearpage
