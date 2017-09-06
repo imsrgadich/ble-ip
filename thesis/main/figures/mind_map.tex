@@ -1,0 +1,56 @@
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \vspace*{1cm}
+  \begin{tikzpicture}[mindmap, grow cyclic, every node/.style=concept, concept color=orange!40,scale=0.6,transform shape,
+	level 1/.append style={level distance=4cm,sibling angle=125}]
+    \node{Models}[clockwise from=-28] 
+    child [concept color=yellow!30]{ node (pmd) {Pathloss model}[clockwise from=-0]}
+    child [concept color=blue!30]{ node (gp) {Gaussian Processes}[clockwise from=-260]}
+    ;
+  \end{tikzpicture}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \begin{tikzpicture}[mindmap, grow cyclic, every node/.style=concept, concept color=orange!40,scale=0.6,transform shape,
+	level 1/.append style={level distance=4cm,sibling angle=90},
+    level 2/.append style={level distance=3cm,sibling angle=90}]
+    
+    \node{Received Signal Strength based methods}[clockwise from=-90] 
+    
+   child [concept color=purple!30] { node (nmem) {Non-memory retaining methods}[clockwise from=-0]
+        child { node (pm) {Probabilistic Methods}[clockwise from=-0]
+        		 child { node {Decision based likelihood model}}}
+         child [concept color=green!50]{ node (mem) {Memory based methods}[clockwise from=-90]
+        child { node {Bayesian Filtering}[clockwise from=-30]
+        child { node {Grid Filter}}
+         child { node {Kalman Filter}}
+         child { node {Extended Kalman Filter}}
+         child { node {Unscented Kalman Filter}}
+         child{node {Particle Filter}}
+        }}
+        child { node (dm) {Deterministic Methods}[clockwise from=-150]
+         child { node {k-Nearest Neighbours}}
+         child { node {Artificial Neural Networks}}
+         child { node {Support Vector Machines}}
+         }
+    };
+    
+    \begin{pgfonlayer}{background}
+    \draw [circle connection bar]
+       (mem) edge (dm)
+       (pm) edge (mem);
+  \end{pgfonlayer}
+    
+
+
+
+\end{tikzpicture}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{(left) Gaussian Processes and Pathloss models used in the thesis. (right) RSSI based methods used in the thesis. The colorless edges denote that memory based methods can be used in conjunction with non-memory based methods.}
+\label{fig:test}
+\end{figure}
+%\FloatBarrier
