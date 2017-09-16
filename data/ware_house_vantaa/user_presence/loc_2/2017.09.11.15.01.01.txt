@@ -1,0 +1,20 @@
+Experiment: user presence. without user. vantaa. loc 2. direction rotation.
+x coordinate: 1893
+y coordinate: 2673
+00:00:14.316,13,ActiveAhead,00:13:04:10:B6:5E,-82
+00:00:14.573,13,ActiveAhead,00:13:04:10:B8:39,-93
+00:00:15.806,13,ActiveAhead,00:13:04:10:B9:62,-77
+00:00:15.807,13,ActiveAhead,00:13:04:10:B6:4D,-83
+00:00:16.398,13,ActiveAhead,00:13:04:10:B6:4D,-83
+00:00:18.444,13,ActiveAhead,00:13:04:10:B6:42,-103
+00:00:18.786,13,ActiveAhead,00:13:04:10:B6:68,-90
+00:00:18.876,13,ActiveAhead,00:13:04:10:B8:3E,-85
+00:00:18.954,13,ActiveAhead,00:13:04:10:B6:5E,-83
+00:00:18.959,13,ActiveAhead,00:13:04:10:B9:62,-75
+00:00:19.041,13,ActiveAhead,00:13:04:10:B6:FD,-100
+00:00:19.046,13,ActiveAhead,00:13:04:10:B6:74,-81
+00:00:19.052,13,ActiveAhead,00:13:04:10:B6:95,-90
+00:00:19.063,13,ActiveAhead,00:13:04:10:B6:95,-89
+00:00:19.129,13,ActiveAhead,00:13:04:10:B8:3E,-93
+00:00:19.307,13,ActiveAhead,00:13:04:10:B6:68,-91
+00:00:19.395,13,ActiveAhead,00:13:04:10:B6:5E,-97

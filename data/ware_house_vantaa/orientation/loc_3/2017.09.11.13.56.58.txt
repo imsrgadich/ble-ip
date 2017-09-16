@@ -1,0 +1,15 @@
+Experiment: smartphone orientation. 0 degrees. s4 mini. loc 3. vantaa random direction. without user. 
+x coordinate: 2222
+y coordinate: 15123
+00:00:00.188,13,ActiveAhead,00:13:04:10:8B:0F,-96
+00:00:00.233,13,ActiveAhead,00:13:04:10:B6:68,-76
+00:00:00.275,13,ActiveAhead,00:13:04:10:B6:95,-87
+00:00:00.646,13,ActiveAhead,00:13:04:10:B8:2A,-77
+00:00:00.767,13,ActiveAhead,00:13:04:10:B6:FD,-80
+00:00:00.807,13,ActiveAhead,00:13:04:10:B6:FD,-80
+00:00:00.827,13,ActiveAhead,00:13:04:10:B6:95,-89
+00:00:00.923,13,ActiveAhead,00:13:04:10:B8:2A,-84
+00:00:00.981,13,ActiveAhead,00:13:04:10:B6:68,-79
+00:00:01.071,13,ActiveAhead,00:13:04:10:B6:16,-85
+00:00:01.191,13,ActiveAhead,00:13:04:10:B6:4D,-87
+00:00:01.422,13,ActiveAhead,00:13:04:10:B6:74,-101
