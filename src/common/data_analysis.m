@@ -2,21 +2,30 @@ files = get_training_data();
 
 set(0,'DefaultFigureWindowStyle','docked') % docked or normal
 figure, hold on, xlim([-110 -50])
+title('Smartphone: Helvar loc\_1, 8C:6A luminaire (NLOS)')
 
-[t, mac_beacon, y_beacon, ~, ~, ~, ~, id_wifi, y_wifi]= load_data(files{1});
-ids = contains(mac_beacon,'8C:D1');
+[t,mac_beacon,y_beacon, ~, ~, ~, ~, ~, ~]= load_data(files{3});
+ids = contains(mac_beacon,'8C:6A');
+
 y = y_beacon(ids);
 
-orientation_helvar_90_loc2_8cd1 = y;
-save('orientation_helvar_90_loc2_8cd1.mat','orientation_helvar_90_loc2_8cd1')
+disp([mean(y);median(y);mode(y);var(y)])
 
-%histogram(y), 
+smartphone_helvar_nexus5_loc1_8c6a= y;
+save('smartphone_helvar_nexus5_loc1_8c6a.mat','smartphone_helvar_nexus5_loc1_8c6a')
 
-[f,xi] = ksdensity(y,'Bandwidth',0.5);
-plot(xi,f);
+[f,xi] = ksdensity(y,'Bandwidth',0.5);plot(xi,f); 
 
-legend('90 deg','45 deg','0 deg','hand 1','hand 2', 'pocket')
-title('Effect of Orientation: loc\_2, 8C:A0 luminaire')
+legend('S4','S4 mini','Nexus 5')
+
+
+legend( 'hand')
+% legend('90 deg','45 deg','0 deg','hand','pocket')
+title('Smartphone: Helvar loc\_1, 8C:57 luminaire (NLOS)')
+
+
+
+
 
 % %%
 % map = brewermap(6,'Set1'); 
@@ -32,3 +41,23 @@ title('Effect of Orientation: loc\_2, 8C:A0 luminaire')
 % axis tight
 % legalpha('90 deg','45 deg','0 deg','hand 1','hand 2', 'pocket')
 % legend boxoff
+
+
+disp([mean(orientation_helvar_90_loc2_8b26);
+      median(orientation_helvar_90_loc2_8b26);
+      var(orientation_helvar_90_loc2_8b26);
+      mean(orientation_helvar_45_loc2_8b26);
+      median(orientation_helvar_45_loc2_8b26);
+      var(orientation_helvar_45_loc2_8b26);
+      mean(orientation_helvar_0_loc2_8b26);
+       median(orientation_helvar_0_loc2_8b26);
+       var(orientation_helvar_0_loc2_8b26);
+       mean(orientation_helvar_hand_loc2_8b26);
+    median(orientation_helvar_hand_loc2_8b26);
+    var(orientation_helvar_hand_loc2_8b26);
+    mean(orientation_helvar_hand2_loc2_8b26);
+   median(orientation_helvar_hand2_loc2_8b26);
+   var(orientation_helvar_hand2_loc2_8b26);
+  mean(orientation_helvar_pocket_loc2_8b26);
+  median(orientation_helvar_pocket_loc2_8b26);
+  var(orientation_helvar_pocket_loc2_8b26)]')
