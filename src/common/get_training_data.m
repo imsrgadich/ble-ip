@@ -4,8 +4,8 @@ function text_files = get_training_data()
 
 
 %% Measurement files from SenseServe app
-% text_files = {'../data/train/1001_104748.txt';
-%               '../data/train/1001_104907.txt';
+% text_files = {'/home/imsrgadich/Documents/gitrepos/aalto/indoor_position_fingerprint/data/aalto_kwarkki/train/1001_104748.txt';
+%               '/home/imsrgadich/Documents/gitrepos/aalto/indoor_position_fingerprint/data/aalto_kwarkki/train/1001_104907.txt';
 %               '../data/train/1001_105101.txt';
 %               '../data/train/1001_105335.txt';
 %               '../data/train/1001_105412.txt';
@@ -90,6 +90,34 @@ text_files = {
               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/smartphone/loc_1/2017.09.09.20.11.22.txt';
               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/smartphone/loc_1/2017.09.09.23.24.20.txt';            
     };
+
+% text_files = {
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/ware_house_vantaa/smartphone/loc_2/2014.05.25.03.45.58.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/ware_house_vantaa/smartphone/loc_2/2017.09.11.09.15.44.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/ware_house_vantaa/smartphone/loc_2/2017.09.11.09.51.35.txt';
+%     };
+
+
+% text_files = {
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/luminaire/2017.09.10.22.52.17.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/luminaire/2017.09.10.23.20.38.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/luminaire/2017.09.10.23.40.06.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/luminaire/2017.09.10.23.57.05.txt';
+%               
+%     };
+
+
+% %% half power
+% text_files = {
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/half_power_8b3f/2017.09.29.15.41.29.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/half_power_8b3f/2017.09.29.15.47.06.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/half_power_8b3f/2017.09.29.15.49.26.txt';            
+%     };
+
+% %% comparison with radio-analyzer.
+% text_files = {
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/radio-analyzer/kontact_b2_1b/full_power/full_power_B2_1B_outside.txt';
+%     };
 
 
 end
