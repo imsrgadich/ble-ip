@@ -9,17 +9,18 @@
 %% Task 1: Create the reference map.
 
 % get locations
-load('/home/imsrgadich/Documents/gitrepos/aalto/indoor_position_fingerprint/data/helvar_rd/locations.mat')
+%load('/home/imsrgadich/Documents/gitrepos/aalto/indoor_position_fingerprint/data/helvar_rd/locations.mat')
 % load('../data/aalto_kwarkki/reference_map/reference_map_updated.mat')
 % reference_map = reference_map_updated;
-train_points = location;
+training_data_location = '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/';
+num_train_points = 63;
 
 % training data from files
-text_files = get_training_data();
+%text_files = get_training_data();
           
 % Reference map, RSS values for BLE beacons and WiFi routers and
 % correponding ID's. Check load_data for details.
-[reference_map, y_beacon, y_wifi,id_beacon,id_wifi] = get_reference_map(train_points,text_files);
+[reference_map, y_beacon, y_wifi,id_beacon,id_wifi] = get_reference_map(num_train_points,training_data_location);
 
 % test data: lets just take the mean of the data for now.
 train_data = reference_map(:,3:max(id_beacon));

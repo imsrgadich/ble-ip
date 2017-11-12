@@ -1,10 +1,9 @@
-function [t, mac_beacon, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi] = load_data(file)
-% Load Sensserve logging data
+function [t, mac_beacon, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi,location] = load_data(file)
 %
 % SYNOPSIS
 %   [t, id, y] = load_data(file)
 %   [t, id, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi] = load_data(file)
-%
+%ar
 % DESCRIPTION
 %   Loads the data logged using the IndoorAtlas Sensserve Android app into
 %   Matlab. For now, only Bluetooth and IMU data is loaded.
@@ -25,15 +24,10 @@ function [t, mac_beacon, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi] = loa
 %   t_wifi, id_wifi, y_wifi
 %       WiFi timestaps, ids (access point MACs), and RSS values.
 %
-% VERSION
-%   2016-11-01
-%
-% AUTHORS
-%   Roland Hostettler <roland.hostettler@aalto.fi>
-
 % TODO:
 %   * Return the data in structs instead of vectors for everything to
 %     simplify things.
+
 
     %% Definitions and Parameters
     % Bluetooth sensor ID
@@ -108,35 +102,35 @@ function [t, mac_beacon, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi] = loa
     % Lookup table for WIFI <-> MAC (as per WIFI present in the building)
     % Mobile app ask user to select WIFI networks mostly used in the
     % location.
-    wifi = {
-        16,  '24:01:c7:b9:1c:8f'; 
-        17,  '24:01:c7:b9:1c:8d';
-        18,  '00:27:0d:2f:f5:ff';
-        19,  '00:27:0d:2f:f5:fd';
-        20,  '24:01:c7:b9:1c:80';
-        21,  '24:01:c7:b9:1c:82';
-        22,  '00:27:0d:08:c1:4f';
-        23,  '00:27:0d:2f:e6:dd';
-        24,  '24:01:c7:91:69:5f';
-        25, '24:01:c7:b9:1c:8e';
-        26, '00:27:0d:2f:f5:fe';
-        27, '24:01:c7:b9:1c:81';
-        28, '24:01:c7:91:69:5d';
-        29, '00:27:0d:08:c1:4e';
-        30, '24:01:c7:91:69:5e';
-        31, 'd4:d7:48:81:e9:23';
-        32, '00:27:0d:2f:f4:61';
-        33, '24:01:c7:91:69:50';
-        34, 'd4:d7:48:81:e9:22';
-        35, '00:27:0d:2f:f4:6d';
-        36, 'd4:d7:48:81:e9:20';
-        37, '00:27:0d:2f:f4:60';
-        38, '00:27:0d:2f:e6:d1';
-        39, '00:27:0d:08:c1:41';
-        40, '00:27:0d:08:c1:40';
-        41, '00:27:0d:2f:f4:6f';
-        42, '00:27:0d:08:9b:6e';        
-    };
+%     wifi = {
+%         16,  '24:01:c7:b9:1c:8f'; 
+%         17,  '24:01:c7:b9:1c:8d';
+%         18,  '00:27:0d:2f:f5:ff';
+%         19,  '00:27:0d:2f:f5:fd';
+%         20,  '24:01:c7:b9:1c:80';
+%         21,  '24:01:c7:b9:1c:82';
+%         22,  '00:27:0d:08:c1:4f';
+%         23,  '00:27:0d:2f:e6:dd';
+%         24,  '24:01:c7:91:69:5f';
+%         25, '24:01:c7:b9:1c:8e';
+%         26, '00:27:0d:2f:f5:fe';
+%         27, '24:01:c7:b9:1c:81';
+%         28, '24:01:c7:91:69:5d';
+%         29, '00:27:0d:08:c1:4e';
+%         30, '24:01:c7:91:69:5e';
+%         31, 'd4:d7:48:81:e9:23';
+%         32, '00:27:0d:2f:f4:61';
+%         33, '24:01:c7:91:69:50';
+%         34, 'd4:d7:48:81:e9:22';
+%         35, '00:27:0d:2f:f4:6d';
+%         36, 'd4:d7:48:81:e9:20';
+%         37, '00:27:0d:2f:f4:60';
+%         38, '00:27:0d:2f:e6:d1';
+%         39, '00:27:0d:08:c1:41';
+%         40, '00:27:0d:08:c1:40';
+%         41, '00:27:0d:2f:f4:6f';
+%         42, '00:27:0d:08:9b:6e';        
+%     };
 
   
 
@@ -163,12 +157,21 @@ function [t, mac_beacon, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi] = loa
 
     fp = fopen(file);
      
-    % comment this line no needed. I need to skip three lines before
-    % parsing
+    % comment this line no needed. Skip first line and get x and y
+    % coordinates from next two lines.
     for k=1:3
         line = fgets(fp);
+        switch k
+            case 2
+                data = textscan(line, '%s%f', 'Delimiter', ':');
+                x_coord = data{2}/1000;
+                
+            case 3
+                data = textscan(line, '%s%f', 'Delimiter', ':');
+                y_coord = data{2}/1000;
+        end
     end
-    
+    location = [x_coord,y_coord];
     done = false;
     while ~done
         % Get a single line from the file and then try to parse it.        

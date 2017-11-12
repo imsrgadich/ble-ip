@@ -2,21 +2,22 @@
 %% Get the RSS, WIFI data for each measurement location 
 %  (as given in the location.mat)
 
-function [map, y_beacon, y_wifi,id_beacon,id_wifi] = get_reference_map(location,files)
+function [map, y_beacon, y_wifi,id_beacon,id_wifi] = get_reference_map(num_train_points,training_data_location)
 
-          
-for i = 1:size(location,1)
+% get the map. 28 is the number of AA in the lab.
+ map = zeros(num_train_points,28);
+
+for i = 1:num_train_points
     
+    % Get the file name
+    files = strcat(training_data_location,num2str(i),'.txt');
     % Load the data first
-    [~, id_beacon, y_beacon, ~, ~, ~, ~, id_wifi, y_wifi] = load_data(files{i});
-    
-    % run only once.
-    if i == 1
-        map = zeros(size(location,1),max(id_beacon));
-    end
+    [~, id_beacon, y_beacon, ~, ~, ~, ~, id_wifi, y_wifi, location] = load_data(files);
     
     % location 
-    map(i,1:2) = location(i,:);
+    map(i,1:2) = location;
+    
+    %% Taking the mean as we dont have the infra to mask the channels.
     
     % for beacons average value of RSS
     for j = 3:max(id_beacon)
@@ -33,9 +34,6 @@ end
 
 % if some MAC is not heard at some location, assign a minimum dB value or
 % get the device sensitivity level, -93dBm for BLE beacons.
-% https://store.kontakt.io/our-products/27-beacon.html
-% we dont know the minimum sensitivity of WiFi, we are assuming it to be
-% -110 dB.
 
 % Get the indices of the beacons with NaN RSS value.
 [i,j]=ind2sub(size(map),find(isnan(map)));

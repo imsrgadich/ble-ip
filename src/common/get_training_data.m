@@ -85,11 +85,11 @@ function text_files = get_training_data()
 
 %% Smartphone
 
-text_files = {
-              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/smartphone/loc_1/2014.05.23.17.11.18.txt';
-              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/smartphone/loc_1/2017.09.09.20.11.22.txt';
-              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/smartphone/loc_1/2017.09.09.23.24.20.txt';            
-    };
+% text_files = {
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/smartphone/loc_1/2014.05.23.17.11.18.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/smartphone/loc_1/2017.09.09.20.11.22.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/smartphone/loc_1/2017.09.09.23.24.20.txt';            
+%     };
 
 % text_files = {
 %               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/ware_house_vantaa/smartphone/loc_2/2014.05.25.03.45.58.txt';
@@ -118,6 +118,17 @@ text_files = {
 % text_files = {
 %               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/radio-analyzer/kontact_b2_1b/full_power/full_power_B2_1B_outside.txt';
 %     };
+
+%% comparison with radio-analyzer.
+text_files = {
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+    };
+
 
 
 end
