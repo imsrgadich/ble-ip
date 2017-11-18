@@ -30,6 +30,7 @@ function [m,P,pf] = gp_pf(sx,Y,w,r,time_step,options)
 nS= size(sx,1); % Number of particles
 theta = options.theta;
 T = options.T;
+Y = Y - options.min_rssi;
 % pf.resamp = 0;
 % pf.uniq = nS;
 % pf.fail = 0;

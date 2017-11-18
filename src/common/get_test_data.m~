@@ -34,14 +34,22 @@ for i = 1:size(test_text_files,1)
          for j = 1:max(id_beacon)-2
              b_ind = temp_id_beacon == j+2;
              if sum(b_ind)==0
-                 temp_test_data(ceil(t/2),j) = options.min_rssi; % minimum sensitivity of device
+                 temp_test_data(t,j) = options.min_rssi; % minimum sensitivity of device
              else
-                 temp_test_data(ceil(t/2),j) = mean(temp_y_beacon(b_ind));
+                 temp_test_data(t,j) = mean(temp_y_beacon(b_ind));
              end
          end
     end
     
-    test_data{i} = temp_test_data;  
+    test_data{i} = temp_test_data;
+   
+    
+    
+%     % for wifi average value of RSS
+%     for k= 16:42
+%         w_ind = id_wifi == k;
+%         test_data(i,k) = mean(y_wifi(w_ind));  
+%     end    
 end
 
 

@@ -1,7 +1,7 @@
-% gridFilter Implementation of PSIS Particle Filter 
+% gridFilter Implementation of Gaussian Process Grid Filter
 %
 % Syntax:
-%   [m,pf] = particleFilter(sx,y,w,r,T,options,iter)
+%   [m,pf] = gp_gf(sx,y,w,r,T,options,iter)
 %
 % In:
 %   sx      - particles propagated from previous time step
