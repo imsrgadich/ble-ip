@@ -17,13 +17,12 @@
 %   ukf - struct for ukf options.
 % Description:
 %   Gives the Particle filter estimate for the given measuremenent values.
-%   See Pg. 117 of Bayesian Filtering and Smoothing, Simo Särkkä.
+%   See Pg. 86 of Bayesian Filtering and Smoothing, Simo Särkkä.
 %   
-% Set the PSIS flag (default: no PSIS) before the function is called.
 
-function [M,P,ukf] = gp_ukf(m,p,y,options)
+function [M,P,ukf] = gp_ukf(m,p,y,id,options)
 
-y = y - options.min_rssi; % check get_reference_map for details.
+y = y - options.min_rssi+10; % check get_reference_map for details.
 n = options.N_states; %number of states
 
 
@@ -36,10 +35,11 @@ sx = sqrt(n + options.lambda)*sx + repmat(m',1,2*n+1);
 
 % Progagate through the dynamic model; dt = 1 sec.
 % as we are getting the measurement at a interval 1 sec.
-SX = options.A(1) * sx; %% 4 x 4 * 4 * 9
+dt = options.dt;
+SX = options.A(dt) * sx; %% 4 x 4 * 4 * 9
 
-% Prediction step: Get the predicted mean and covariance.
-m_minus = sum(repmat(options.WM',n,1) + SX,2);
+% Prediction step: Get the predicted mean and covP_Fariance.
+m_minus = sum(repmat(options.WM',n,1).* SX,2);
 P_minus = zeros(n);
 for i = 1:2*n+1
     P_minus = P_minus + options.WC(i) * (SX(:,i) - m_minus) * (SX(:,i) - m_minus)';
@@ -53,16 +53,17 @@ HX = [zeros(n,1) L -L];
 HX = sqrt(n + options.lambda)*HX + repmat(m_minus,1,2*n+1);
 
 % Propogate the sigma points through the measurement model.
-Y = gpPred(HX,options);
+
+Y = gpPred(HX(1:2,:)',id-2,options);
 
 % Get the predicted mean and covariance from the measurments. And also the
 % cross covariance matrix.
-meas_mu = sum(repmat(options.WM',n,1) + Y,2); % 28 x 1
-meas_cov = zeros(n); % 28 x 28
-meas_cross_cov = zeros(n,numel(y)); % 4 x 28   
+meas_mu = sum(options.WM.*Y,1); 
+meas_cov = zeros(size(Y,2)); 
+meas_cross_cov = zeros(n,numel(y));
 for i = 1:2*n+1
-    meas_cov = meas_cov + options.WC(i) * (Y(:,i) - meas_mu) * (Y(:,i) - meas_mu)';
-    meas_cross_cov = meas_cross_cov + options.WC(i) * (SX(:,i) - m_minus) * (Y(:,i) - meas_mu)';
+    meas_cov = meas_cov + options.WC(i) * (Y(i) - meas_mu) * (Y(i) - meas_mu)';
+    meas_cross_cov = meas_cross_cov + options.WC(i) * (SX(:,i) - m_minus) * (Y(i) - meas_mu)';
 end
 meas_cov = meas_cov + options.R;
 

@@ -1,0 +1,56 @@
+[~, C] = gp_trcov(gp, x); %% see below.
+  
+L = chol(C,'lower');
+a = L'\(L\y);
+
+nxt = size(xt,1); nblock=10000;
+ind = ceil(nxt./nblock);
+Eft = zeros(nxt,1);    % Mean
+Varft = zeros(nxt,1);    % Variance
+
+ xtind = (i1-1)*nblock+1:min(i1*nblock,nxt);
+        xtind2 = xtind;
+
+K=gp_cov(gp,x,xt(xtind,:),predcf);
+
+Eft(xtind2) = K'*a;
+
+V = gp_trvar(gp,xt((i1-1)*nblock+1:min(i1*nblock,nxt),:),predcf);
+
+Varft(xtind2) = V - sum(v'.*v',2);
+v = L\K;
+
+========================
+gp_trcov
+
+ [n, m] =size(x);
+      
+      s = 1./(gpcf.lengthScale);
+      s2 = s.^2;
+      if size(s)==1
+        s2 = repmat(s2,1,m);
+      end
+      ma2 = gpcf.magnSigma2;
+      
+      C = zeros(n,n);
+      for ii1=1:n-1
+        d = zeros(n-ii1,1);
+        col_ind = ii1+1:n;
+        for ii2=1:m
+          d = d+s2(ii2).*(x(col_ind,ii2)-x(ii1,ii2)).^2;
+        end
+        C(col_ind,ii1) = d./2;
+      end
+      C(C<eps)=0;
+      C = C+C';
+      C = ma2.*exp(-C);
+end
+
+ K(1:n1:end)=K(1:n1:end) + gp.jitterSigma2;
+	============================
+	sub-function: lik_gaussian_trcov(lik, x)
+	C = sparse(1:n,1:n,ones(n,1).*lik.sigma2,n,n);
+	=========================
+C=K;
+C = C + gp.lik.fh.trcov(gp.lik, repmat(x1,m+1,1)); %% gives a sparse matrix in *gp.lik.fh.trcov(gp.lik, repmat(x1,m+1,1))*. its just a identity matrix with likelihood noise.
+========================

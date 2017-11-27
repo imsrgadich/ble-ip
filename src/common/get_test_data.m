@@ -1,4 +1,4 @@
-function test_data = get_test_data(options)
+function [test_data,tt,id,y] = get_test_data(options)
 
 
 % test_text_files = {'../data/test/1001_113436.txt';
@@ -11,11 +11,15 @@ function test_data = get_test_data(options)
 %               };
 
 test_text_files = {'/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/test_meas_4.txt';
-                   '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/test_meas_4.txt';
+                   '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/test_meas_5.txt';
+                   '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/test_meas_6.txt';
                   };
           
 test_data = {};
-          
+tt= {};
+id={};
+y={};
+
 for i = 1:size(test_text_files,1)
     [t_beacon, id_beacon, y_beacon, ~, ~, ~, ~, ~, ~] = ...
                                              load_data(test_text_files{i});
@@ -41,8 +45,10 @@ for i = 1:size(test_text_files,1)
          end
     end
     
+    tt{i} = t_beacon;
+    id{i} = id_beacon';
+    y{i} = y_beacon';
     test_data{i} = temp_test_data;  
 end
-
 
 end

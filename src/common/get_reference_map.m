@@ -59,6 +59,6 @@ map(isnan(map)) = options.min_rssi;
 % point in the map same as zero mean of the GP. This was to make better the
 % boundary performance of the GP's
 
-map(:,3:end) = map(:,3:end) - options.min_rssi;                  
+map(:,3:end) = map(:,3:end) - options.min_rssi +10;                  
 end
 

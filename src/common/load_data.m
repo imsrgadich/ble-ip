@@ -101,10 +101,6 @@ end
         30,'00:13:04:10:8C:6A';
     };
 
-
-
-
-
     % Lookup table for WIFI <-> MAC (as per WIFI present in the building)
     % Mobile app ask user to select WIFI networks mostly used in the
     % location.
@@ -182,9 +178,10 @@ end
                     y_coord = data{2}/1000;
             end
         end
+        location = [x_coord,y_coord];
     end
     
-    location = [x_coord,y_coord];
+    
     done = false;
     while ~done
         % Get a single line from the file and then try to parse it.        
@@ -221,7 +218,11 @@ end
                 switch data{2}
                     case SensorType.BLUETOOTH
                         % For Active Aheads we have a pattern
-                        iId = strcmp(data{4}, beacons(:, 2));
+                        try
+                             iId = strcmp(data{4}, beacons(:, 2));
+                        catch
+                            continue
+                        end
                         
                         % If we decide to mac address instead of mac_id.
                         %iId = contains(data{4}, '00:13:04:10');

@@ -25,12 +25,12 @@
 %   
 % Set the PSIS flag (default: no PSIS) before the function is called.
 
-function [m,P,pf] = gp_pf(sx,Y,w,r,time_step,options)
+function [m,P,pf] = gp_pf(sx,Y,id,w,r,time_step,options)
 
 nS= size(sx,1); % Number of particles
-theta = options.theta;
-T = options.T;
-Y = Y - options.min_rssi;
+%theta = options.theta;
+dt = options.dt;
+%Y = Y - options.min_rssi;
 % pf.resamp = 0;
 % pf.uniq = nS;
 % pf.fail = 0;
@@ -48,17 +48,38 @@ Y = Y - options.min_rssi;
 % omega = sx(:,4);
 
 %Bootstrap Filter
-pf.SX = sx*options.A(options.T)' +...
+pf.SX = sx*options.A(dt)' +...
                 r * chol(options.Q,'lower'); % dynamic model
-%                 r * chol(options.g(options.T)*options.Q*options.g(options.T)','lower'); % dynamic model
+%                 r * chol(options.g(T)*options.Q*options.g(T)','lower'); % dynamic model
 if options.meas_model_switch ==1
-    log_w = log(w) + gp_loglikelihood(pf.SX(:,1:2),Y,options);
+    log_w = log(w) + gp_loglikelihood(pf.SX(:,1:2),Y,id,options);
 else
     log_w = log(w) + log(knn_likelihood(pf.SX(:,1:2),Y,options));
 end
 pf.w = exp(log_w-max(log_w));
 
 % Normalize the weights
+
+% Dynamic model Augmented Turn Coordinated Model
+% options.f = @(x,xdot,y,ydot,T,omega) ...
+%     [x+(xdot.*sin(omega*T)./omega)-(ydot.*(1-cos(omega*T))./omega);
+%      y+(xdot.*(1-cos(omega*T))./omega)+(ydot.*sin(omega*T)./omega);
+%      sqrt(xdot.^2+ydot.^2);
+%      omega];
+
+options.A =@(dt) [1 0 dt 0;
+        0 1 0 dt;
+        0 0 1 0;
+        0 0 0 1];
+
+% options.g = @(T) [0.5*T*T 0       0;
+%                   0       0.5*T*T 0;
+%                   T       T       0;
+%                   0       0       1];
+
+% Process noise: only for location and angle measurement.              
+options.Q = 2^2*eye(4);
+%% Get the test data
 pf.w  = pf.w / sum(pf.w);
 
 
@@ -68,7 +89,7 @@ pf.w  = pf.w / sum(pf.w);
     % Get the PSIS shape parameter and log weights else get neff
 %     [log_psis_w,pf.kHat] = psislw(log(pf.w),options.tailPrct);
 %     pf.w = exp(log_psis_w);
-[~,pf.kHat] = psislw(log(pf.w),20);  
+[~,pf.kHat] = psislw(log(pf.w),20);
 %pf.neff = (sum(pf.w.^2))^-1;
 
  if pf.kHat > 0.7
@@ -87,59 +108,4 @@ pf.w  = pf.w / sum(pf.w);
      P = (repmat(pf.w,1,options.N_states) .* SX_m)'*SX_m;
  end
 
-
-
-
-% %Get the mean based on the resamp_switch
-% if options.resamp_switch == 0
-%     m = sum(repmat(pf.w,1,options.N_states) .* pf.SX,1);
-%     SX_m = bsxfun(@minus,pf.SX,m);
-%     P = (repmat(pf.w,1,options.N_states) .* SX_m)'*SX_m;
-% else
-%     key = 1;
-%     if options.resamp_switch == 2
-%         key = mod(T,options.steps);
-%     end
-%     
-%     if  options.resamp_switch == -1
-%         if options.PSIS == 1
-%             if pf.kHat > options.kHat_thres
-%                 key = 0;
-%             end
-%         elseif pf.neff < nS * options.neff_thres;  %%nS/10
-%             key = 0;
-%         end
-%     end
-%                 
-%        
-%     if options.resamp_switch == 1
-%         key = 0;
-%     end
-%     
-%     if key == 0
-%         try
-%             pf.resamp = 1;
-%             %dbstop if infnan
-%             ind = resampstr(pf.w);
-%             pf.uniq = length(unique(ind));
-%             pf.SX   = pf.SX(ind,:);
-%             m = mean(pf.SX);
-%             pf.w = (1/nS)*ones(nS,1);
-%             SX_m = bsxfun(@minus,pf.SX,m);
-%             P = (repmat(pf.w,1,options.N_states) .* SX_m)'*SX_m;
-%         catch
-%             pf.fail = 1;
-%             m = zeros(1,options.N_states);
-%             P = zeros(options.N_states,options.N_states);
-%             warning('Complete particle weight degeneration (%d partilces,%d time, iteration %d).'...
-%                                                           , nS, T, iter)
-%             return
-%         end
-%     elseif (key ~= 0 && options.resamp_switch == 2) || ...
-%            (options.resamp_switch == -1)
-%         m = sum(repmat(pf.w,1,options.N_states) .* pf.SX);
-%         SX_m = bsxfun(@minus,pf.SX,m);
-%         P = (repmat(pf.w,1,options.N_states) .* SX_m)'*SX_m;
-%     end
-% end
 end
