@@ -1,4 +1,4 @@
-function [t, id_beacon, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi,location,mac_beacon] = load_data(file,flag)
+function [t, id_beacon, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi,location] = load_data(file,flag)
 %
 % SYNOPSIS
 %   [t, id, y] = load_data(file)
@@ -90,6 +90,7 @@ end
         19,'00:13:04:10:8B:62';
         20,'00:13:04:10:8B:89';
         21,'00:13:04:10:8B:65';
+  
         22,'00:13:04:10:8C:57';
         23,'00:13:04:10:8C:34';
         24,'00:13:04:10:8C:27';
@@ -152,7 +153,7 @@ end
     % Stores the Bluetooth data as 
     t = [];
     id_beacon = [];
-    mac_beacon = [];
+    %mac_beacon = [];
     y = [];
     t_wifi = [];
     id_wifi = [];
@@ -231,7 +232,7 @@ end
                         if sum(iId) == 1
                             t = [t, data{1}];
                             id_beacon = [id_beacon, beacons{iId, 1}];
-                            mac_beacon = [mac_beacon, data{4}];
+                            %mac_beacon = [mac_beacon, data{4}];
                             y = [y, data{5}];
                         end
                         
@@ -240,7 +241,7 @@ end
                         if sum(wId) == 1
                             t_wifi = [t_wifi, data{1}];
                             %id_wifi = [id_wifi, wifi{wId, 1}];
-                            %mac_beacon = [mac_beacon, data{4}];
+                            mac_beacon = [mac_beacon, data{4}];
                             y_wifi = [y_wifi, data{5}];
                         end
                         
@@ -264,7 +265,7 @@ end
                         if sum(iId) == 1
                             t = [t, data{1}];
                             id_beacon = [id_beacon, beacons{iId, 1}];
-                            mac_beacon = [mac_beacon, data{4}];
+                            %mac_beacon = [mac_beacon, data{4}];
                             y = [y, data{6}];
                         end
                         

@@ -36,13 +36,13 @@ function text_files = get_training_data()
 %               };
 
 
-%% for luminaires
-% text_files = {
-%               '../../data/helvar_rd/luminaire/2017.09.10.22.52.17.txt';
-%               '../../data/helvar_rd/luminaire/2017.09.10.23.20.38.txt';
-%               '../../data/helvar_rd/luminaire/2017.09.10.23.40.06.txt';
-%               '../../data/helvar_rd/luminaire/2017.09.10.23.57.05.txt';
-%     };
+% for luminaires
+text_files = {
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/data_analysis/luminaire/2017.09.10.22.52.17.txt';
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/data_analysis/luminaire/2017.09.10.23.20.38.txt';
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/data_analysis/luminaire/2017.09.10.23.40.06.txt';
+              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/data_analysis/luminaire/2017.09.10.23.57.05.txt';
+    };
 
 
 %% Orientation
@@ -119,15 +119,15 @@ function text_files = get_training_data()
 %               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/radio-analyzer/kontact_b2_1b/full_power/full_power_B2_1B_outside.txt';
 %     };
 
-%% comparison with radio-analyzer.
-text_files = {
-              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
-              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
-              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
-               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
-              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
-              '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
-    };
+% %% comparison with radio-analyzer.
+% text_files = {
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+%                '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+%               '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/calibration_data/1.txt';
+%     };
 
 
 

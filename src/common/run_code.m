@@ -8,7 +8,7 @@ load('../../mat_files/test_files/test_data.mat')
 
 %% Switch to select measurement model
 % 1 for GP
-% 2 for k-NN
+% 2 for Pathloss model
 
 options.meas_model_switch =1;
 
@@ -67,15 +67,15 @@ done = false;
 
 %% Get the test data
 %testData = test_data{3};
-[test_data,time,id,y] = get_test_data(options);
+[~,time,id,y] = get_test_data(options);
 
 % testData = test_data{3};
 % tt = [1:size(testData,1)]';
 % idd = repmat([1:options.num_beacons]+2,size(testData,1),1);
 
-tt = time{3};
-testData = y{3};
-idd = id{3};
+tt = time{1};
+testData = y{1};
+idd = id{1};
 
 %image = imread('../../images/floorplan.png');
 %image=rgb2gray(image); 
@@ -189,11 +189,10 @@ switch method
                 m_F(j,:) = m;
                 P_F(:,:,j) = P;
                 SX = pf.SX;
-                %neff(i) = pf.neff;
-                kHat(j,1) = pf.kHat;
+                neff(j) = pf.neff;
                 w = pf.w;
                 
-                if tt(j,1) - i > 4
+                if tt(j,1) - i > 1
                     % transforming the means to plot coordinates.
                     temp_m = [1958.5-(temp_m(:,2)*61.2031),913.4651-(temp_m(:,1)*60.8977)];
                     temp_avg_mean = mean(temp_m,1);
@@ -235,3 +234,4 @@ end
 %figure,scatter(m_F(:,1),m_F(:,2))
 
       
+

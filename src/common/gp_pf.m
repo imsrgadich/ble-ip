@@ -56,43 +56,18 @@ if options.meas_model_switch ==1
 else
     log_w = log(w) + log(knn_likelihood(pf.SX(:,1:2),Y,options));
 end
+
+% For stability purposes
 pf.w = exp(log_w-max(log_w));
 
 % Normalize the weights
-
-% Dynamic model Augmented Turn Coordinated Model
-% options.f = @(x,xdot,y,ydot,T,omega) ...
-%     [x+(xdot.*sin(omega*T)./omega)-(ydot.*(1-cos(omega*T))./omega);
-%      y+(xdot.*(1-cos(omega*T))./omega)+(ydot.*sin(omega*T)./omega);
-%      sqrt(xdot.^2+ydot.^2);
-%      omega];
-
-options.A =@(dt) [1 0 dt 0;
-        0 1 0 dt;
-        0 0 1 0;
-        0 0 0 1];
-
-% options.g = @(T) [0.5*T*T 0       0;
-%                   0       0.5*T*T 0;
-%                   T       T       0;
-%                   0       0       1];
-
-% Process noise: only for location and angle measurement.              
-options.Q = 2^2*eye(4);
-%% Get the test data
 pf.w  = pf.w / sum(pf.w);
 
 
-% Depending on PSIS flag either check effective number of sample or get the
-% khat value (also PSIS smoothed weights)
+% check effective number of sample 
+pf.neff = (sum(pf.w.^2))^-1;
 
-    % Get the PSIS shape parameter and log weights else get neff
-%     [log_psis_w,pf.kHat] = psislw(log(pf.w),options.tailPrct);
-%     pf.w = exp(log_psis_w);
-[~,pf.kHat] = psislw(log(pf.w),20);
-%pf.neff = (sum(pf.w.^2))^-1;
-
- if pf.kHat > 0.7
+ if pf.neff > options.numSamples/10
      pf.resamp = 1;
      %dbstop if infnan
      ind = resampstr(pf.w);
