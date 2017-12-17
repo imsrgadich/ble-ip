@@ -99,6 +99,8 @@ end
         28,'00:13:04:10:8C:4A';
         29,'00:13:04:10:8C:39';
         30,'00:13:04:10:8C:6A';
+        %31,'00:13:04:10:DC:22';
+        %31,'F2:7C:B0:2D:B2:1B';
     };
 
     % Lookup table for WIFI <-> MAC (as per WIFI present in the building)
@@ -264,7 +266,7 @@ end
                         if sum(iId) == 1
                             t = [t, data{1}];
                             id_beacon = [id_beacon, beacons{iId, 1}];
-                            mac_beacon = [mac_beacon, data{4}];
+                            mac_beacon = [mac_beacon, data{5}];
                             y = [y, data{6}];
                         end
                         
