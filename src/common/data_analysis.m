@@ -4,8 +4,8 @@ set(0,'DefaultFigureWindowStyle','docked') % docked or normal
 figure, hold on, xlim([-110 -50])
 title('Smartphone: Helvar loc\_1, 8C:6A luminaire (NLOS)')
 
-[t, id_beacon, y_beacon, ~, ~, ~, ~, ~, ~,~,mac_beacon] = load_data(files{2},'test');
-ids = contains(mac_beacon,'8B:1D');
+[t, id_beacon, y_beacon, ~, ~, ~, ~, ~, ~,~,mac_beacon] = load_data(files{4},'test');
+ids = contains(mac_beacon,'8B:62');
 
 y = y_beacon(ids);
 
