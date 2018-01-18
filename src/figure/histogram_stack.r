@@ -19,8 +19,8 @@ data<- as.data.frame(data)
 colnames(data) <- c("Distance (m)", "RSSI (dBm)")
 
 #scales
-mins<-min(data$`RSSI(dBm)`)
-maxs<-max(data$`RSSI(dBm)`)
+mins<-min(data$`RSSI (dBm)`)
+maxs<-max(data$`RSSI (dBm)`)
 
 data  <- cbind.data.frame(Distance=data[,1],RSSI=data[,2])
 
