@@ -16,8 +16,6 @@ function [f_interval,H] = f_test(x,y)
 F_a_2 = 0.24096;
 F_1_a_2 = 14.25;
 
-
-
 % s1 always needs to be higher variance
 if var(x) > var(y)
     s1 = var(x);
