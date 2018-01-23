@@ -99,3 +99,32 @@ legend('radio-analyzer','channel 37','channel 38','channel 39','smartphone')
 title('Radio-analyzer vs Smartphone: Outside scenario Kontakt beacon (1 m distance)')
 xlabel('Time')
 ylabel('RSSI (dBm)')
+
+
+%% hypothesis testing
+% luminaire
+
+% same underlying population distribution.
+[h,p,test_stat]=kstest2(y_8b30, y_8c6d);
+[h,p,test_stat]=kstest2(y_8caa, y_8b62);
+
+% test the mean of two samples. tttest2.
+[h,p,ci,stats] = ttest2(y_8b30,y_8c6d);
+[h,p,ci,stats] = ttest2(y_8caa,y_8b62);
+
+% f test: variance analysis.
+f_test(y_8b30,y_8c6d)
+f_test(y_8caa,y_8b62)
+
+% user presence.
+% same underlying population distribution.
+[h,p,test_stat]=kstest2(y_8b30, y_8c6d);
+[h,p,test_stat]=kstest2(y_8caa, y_8b62);
+
+% test the mean of two samples. tttest2.
+[h,p,ci,stats] = ttest2(y_8b30,y_8c6d);
+[h,p,ci,stats] = ttest2(y_8caa,y_8b62);
+
+% f test: variance analysis.
+f_test(y_8b30,y_8c6d)
+f_test(y_8caa,y_8b62)
