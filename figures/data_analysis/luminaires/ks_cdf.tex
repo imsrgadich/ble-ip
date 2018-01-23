@@ -1,0 +1,164 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=1.977in,
+height=3.481in,
+at={(0.772in,0.47in)},
+scale only axis,
+unbounded coords=jump,
+xmin=-100,
+xmax=-60,
+xlabel style={font=\color{white!15!black}},
+xlabel={x},
+ymin=0,
+ymax=1,
+ylabel style={font=\color{white!15!black}},
+ylabel={F(x)},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={experiment 1},
+axis x line*=bottom,
+axis y line*=left,
+xmajorgrids,
+ymajorgrids,
+legend style={at={(0.126,0.827)}, anchor=south west, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+-inf	0\\
+-75	0\\
+-75	0.0102040816326531\\
+-74	0.0102040816326531\\
+-74	0.311224489795918\\
+-73	0.311224489795918\\
+-73	0.321428571428571\\
+-72	0.321428571428571\\
+-72	0.614795918367347\\
+-71	0.614795918367347\\
+-71	0.625\\
+-70	0.625\\
+-70	0.974489795918367\\
+-69	0.974489795918367\\
+-69	0.98469387755102\\
+-68	0.98469387755102\\
+-68	1\\
+inf	1\\
+};
+\addlegendentry{plastic+metal}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+-inf	0\\
+-72	0\\
+-72	0.229299363057325\\
+-71	0.229299363057325\\
+-71	0.341825902335456\\
+-70	0.341825902335456\\
+-70	0.346072186836518\\
+-68	0.346072186836518\\
+-68	0.348195329087049\\
+-67	0.348195329087049\\
+-67	0.354564755838641\\
+-66	0.354564755838641\\
+-66	0.426751592356688\\
+-65	0.426751592356688\\
+-65	0.613588110403397\\
+-64	0.613588110403397\\
+-64	0.970276008492569\\
+-63	0.970276008492569\\
+-63	1\\
+inf	1\\
+};
+\addlegendentry{plastic}
+
+\end{axis}
+
+\begin{axis}[%
+width=1.977in,
+height=3.481in,
+at={(3.386in,0.47in)},
+scale only axis,
+unbounded coords=jump,
+xmin=-100,
+xmax=-60,
+xlabel style={font=\color{white!15!black}},
+xlabel={x},
+ymin=0,
+ymax=1,
+ylabel style={font=\color{white!15!black}},
+ylabel={F(x)},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={experiment 2},
+axis x line*=bottom,
+axis y line*=left,
+xmajorgrids,
+ymajorgrids
+]
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+-inf	0\\
+-86	0\\
+-86	0.00230414746543779\\
+-85	0.00230414746543779\\
+-85	0.00460829493087558\\
+-84	0.00460829493087558\\
+-84	0.00921658986175115\\
+-83	0.00921658986175115\\
+-83	0.0184331797235023\\
+-82	0.0184331797235023\\
+-82	0.0668202764976959\\
+-81	0.0668202764976959\\
+-81	0.147465437788018\\
+-80	0.147465437788018\\
+-80	0.274193548387097\\
+-79	0.274193548387097\\
+-79	0.283410138248848\\
+-78	0.283410138248848\\
+-78	0.285714285714286\\
+-71	0.285714285714286\\
+-71	0.288018433179723\\
+-70	0.288018433179723\\
+-70	0.444700460829493\\
+-69	0.444700460829493\\
+-69	0.647465437788018\\
+-68	0.647465437788018\\
+-68	0.896313364055299\\
+-67	0.896313364055299\\
+-67	0.997695852534562\\
+-66	0.997695852534562\\
+-66	1\\
+inf	1\\
+};
+\addplot [color=mycolor2, forget plot]
+  table[row sep=crcr]{%
+-inf	0\\
+-74	0\\
+-74	0.355263157894737\\
+-73	0.355263157894737\\
+-73	0.558270676691729\\
+-72	0.558270676691729\\
+-72	0.733082706766917\\
+-71	0.733082706766917\\
+-71	0.968045112781955\\
+-70	0.968045112781955\\
+-70	0.973684210526316\\
+-69	0.973684210526316\\
+-69	0.975563909774436\\
+-68	0.975563909774436\\
+-68	0.992481203007519\\
+-67	0.992481203007519\\
+-67	1\\
+inf	1\\
+};
+\end{axis}
+\end{tikzpicture}%
