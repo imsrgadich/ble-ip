@@ -1,4 +1,4 @@
-files = get_file_location('luminaires');
+files = get_file_location('orientation');
 
 set(0,'DefaultFigureWindowStyle','docked') % docked or normal
 figure, hold on, xlim([-110 -50])
@@ -8,7 +8,6 @@ title('Smartphone: Helvar loc\_1, 8C:6A luminaire (NLOS)')
 ids = contains(mac_beacon,'8B:62');
 
 y = y_beacon(ids);
-
 histogram(y), hold on
 
 out = datevec(t);
@@ -26,13 +25,11 @@ save('smartphone_helvar_nexus5_loc1_8c6a.mat','smartphone_helvar_nexus5_loc1_8c6
 
 legend('S4','S4 mini','Nexus 5')
 
-
 legend( 'hand')
 % legend('90 deg','45 deg','0 deg','hand','pocket')
 title('Ergorej loc\_2, S4: RSSI pattern')
 
 title('Aalto Kwarkki 3 kerros: RSSI vs distance (not scaled; with median line plot)')
-
 
 % %%
 % map = brewermap(6,'Set1'); 
