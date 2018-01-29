@@ -33,7 +33,7 @@ function [t, id_beacon, y, t_imu, id_imu, y_imu, t_wifi, id_wifi, y_wifi,locatio
 
 if nargin < 2
     flag = 'train';
-elseif ~contains(flag, 'test')
+elseif ~strcmp(flag,'test')
     error('use correct flag')
 end
 
@@ -170,7 +170,7 @@ end
     % coordinates from next two lines onlg if train data
     for k=1:3
         line = fgets(fp);
-        if contains(flag,'train')
+        if strcmp(flag,'train')
             switch k
                 case 2
                     data = textscan(line, '%s%f', 'Delimiter', ':');

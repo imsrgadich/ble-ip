@@ -40,9 +40,7 @@ test_points = [X_test(:) Y_test(:)];
 
 % Using the GPStuff 4.6 package (using few initial parameter values as 
 % given in the toolbox)
-
 [gp,opt] = gp_model_1();
-
 
 
 for i = 3 %: max(id_beacon)

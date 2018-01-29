@@ -13,7 +13,9 @@ function [test_data,tt,id,y] = get_test_data(options)
 test_text_files = {%'/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/test_meas_4.txt';
 %                    '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/test_meas_5.txt';
 %                    '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/test_meas_6.txt';
-                   '/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/2017.11.30.10.07.25.txt';
+                   %'/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/2017.11.30.10.07.25.txt';
+                   '/l/gadichs1/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/new/2018.01.19.11.02.49.txt'
+                   %'/l/gadichs1/gitrepos/helvar/ble-ip-helvar/data/helvar_rd/test_data/new/2018.01.19.11.43.36.txt'
                   };
           
 test_data = {};

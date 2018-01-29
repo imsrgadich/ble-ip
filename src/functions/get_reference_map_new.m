@@ -19,12 +19,17 @@
 %       min_rssi - the minimum rssi as seen by the measurement application.
 %       locations - locations where the calibration data is taken.
 %
-% load the txt files here using the load_data function.
+% load the txt files here using the load_data func
+%load('/home/imsrgadich/Documents/gitrepos/aalto/indoor_position_fingerprint/data/helvar_rd/locations.mat')
+% load('../data/aalto_kwarkki/reference_map/reference_map_updated.mat')
+% reference_map = reference_map_updated;tion.
 % Get the RSS, WIFI data for each measurement location 
 %  (as given in the location.mat)
 
 function [map, y_beacon, y_wifi,id_beacon,id_wifi,options] = ...
                 get_reference_map_new(options)
+
+addpath('/m/cs/scratch/psis-pf/temp/triton_files/calibration_data')
 
 map = zeros(options.num_train_points,options.num_beacons+2); % 2 for (x,y)
 
@@ -32,7 +37,8 @@ map = cell(1,options.num_beacons);
 for i = 1:options.num_train_points
     
     % Get the file name
-    files = strcat(options.training_file_location,num2str(i),'.txt');
+    current_file=options.file_nums(i);
+    files = strcat(options.training_file_location,num2str(current_file),'.txt');
     % Load the data first
     [~, id_beacon, y_beacon, ~, ~, ~, ~, id_wifi, y_wifi,locations] = load_data(files);
     

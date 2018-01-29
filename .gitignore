@@ -1,2 +1,3 @@
 src/common/*.m~
+src/data_analysis/*.m~
 .gitignore

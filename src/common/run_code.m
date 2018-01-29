@@ -159,7 +159,7 @@ switch method
         % Particle Filter for N_seeds iterations
         % Check the filter for various # of paricles.
         
-        im= imread('/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/images/floorplan.png');
+        im= imread('../../images/floorplan.png');
         figure, image(im), hold on
         temp_m = [1958.5-(m_F(1,2)*61.2031),913.4651-(m_F(1,1)*60.8977)];
         pos = [temp_m(1)-2*3*61.2031,...
@@ -222,10 +222,7 @@ switch method
             if i> 50
                 done = true;
             end
-            
-      
-            
-        
+
     otherwise
         warning('Unexpected number. Out of filtering methods')
         
