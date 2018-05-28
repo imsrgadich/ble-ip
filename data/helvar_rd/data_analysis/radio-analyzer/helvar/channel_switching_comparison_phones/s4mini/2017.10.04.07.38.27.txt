@@ -1,9 +1,6 @@
-Experiment: comparison with radio analyser. s4 mini. human height. 
-
+Experiment: comparison with radio analyser. s4 mini. human height.
 x coordinate: 00
-
 y coordinate: 00
-
 00:00:00.267,13,ActiveAhead,00:13:04:10:8C:6A,-77
 00:00:00.534,13,ActiveAhead,00:13:04:10:8B:11,-84
 00:00:00.656,13,ActiveAhead,00:13:04:10:8B:3F,-86

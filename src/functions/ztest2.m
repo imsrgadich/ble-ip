@@ -1,4 +1,4 @@
-function [zval,H] = ztest2(x,y,mux,muy,varx,vary)
+function [zval,p,H] = ztest2(x,y,mux,muy,varx,vary)
 % Two sample z-test to determine if sample means are equal or unequal.
 % input
 % x - sample 1
@@ -11,6 +11,7 @@ function [zval,H] = ztest2(x,y,mux,muy,varx,vary)
 % vary - variance of y
 % output 
 % zval - z score
+% p - p value
 % H - if equal to zero = null hypothesis accepted
 %                 one  = null hypothesis accepted.
 
@@ -21,17 +22,30 @@ if nargin < 3
     vary = var(y);
 end
     
-
 Nx = length(x);
 Ny = length(y);
 zval = ((mean(x)-mean(y))-(mux-muy))/sqrt(varx/Nx+vary/Ny);
 
 % for alpha = 0.05, the decision criterion for accepting null hypothesis is
-% that zval lies in between [-1.96,1.96] else reject it. 
+% that zval lies in between [-7.5909, 7.5909] else reject it. 
+% norminv([0.025 0.975],0,sqrt(15))n - assumed 15 as the variance.
 
-if (-1.96 < zval) && (zval < 1.96)
+
+% p value
+
+% Calculate the probability (area under the curve) till the z statistic.
+% Subtract it from 1 and multiply by 2, as it is two tail test.
+% +-6.1980
+
+a=normcdf(abs(zval),0,sqrt(10));
+%b=normcdf(-zval,0,15);
+
+p = (1-a)*2;
+
+if (0.05 < p)
     H = 0; 
 else
     H = 1;
 end
 
+end

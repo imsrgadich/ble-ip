@@ -1,6 +1,6 @@
-%% GET_REFERENCE_MAP: function to get the reference map for the indoor positioning
+%% GET_REFERENCE_MAP_NEW: function to get the ext reference map for the indoor positioning.
 %
-%  [map, y_beacon, y_wifi,id_beacon,id_wifi,options] = get_reference_map(options) 
+%  [map, y_beacon, y_wifi,id_beacon,id_wifi,options] = get_reference_map_new(options) 
 %
 % input :
 %  options - 
@@ -19,29 +19,36 @@
 %       min_rssi - the minimum rssi as seen by the measurement application.
 %       locations - locations where the calibration data is taken.
 %
-% load the txt files here using the load_data func
+% load the txt files here using the load_data function.
 %load('/home/imsrgadich/Documents/gitrepos/aalto/indoor_position_fingerprint/data/helvar_rd/locations.mat')
 % load('../data/aalto_kwarkki/reference_map/reference_map_updated.mat')
-% reference_map = reference_map_updated;tion.
+% reference_map = reference_map_updated;
 % Get the RSS, WIFI data for each measurement location 
 %  (as given in the location.mat)
 
-function [map, y_beacon, y_wifi,id_beacon,id_wifi,options] = ...
+function [map,id_beacon,options] = ...
                 get_reference_map_new(options)
 
-addpath('/m/cs/scratch/psis-pf/temp/triton_files/calibration_data')
-
-map = zeros(options.num_train_points,options.num_beacons+2); % 2 for (x,y)
+%map = zeros(options.num_train_points,options.num_beacons+2); % 2 for (x,y)
 
 map = cell(1,options.num_beacons);
+options.training_points = [];
+
 for i = 1:options.num_train_points
     
-    % Get the file name
+    % Get the file number
     current_file=options.file_nums(i);
-    files = strcat(options.training_file_location,num2str(current_file),'.txt');
+    file = strcat(options.training_file_location,num2str(current_file),'.txt');
     % Load the data first
-    [~, id_beacon, y_beacon, ~, ~, ~, ~, id_wifi, y_wifi,locations] = load_data(files);
+    [t, id_beacon, y_beacon,~, ~, ~, ~, ~, ~, ~,location] = load_data(file);
     
+    if isfield(options,'time_calib')==1
+        ind = find(t<options.time_calib);
+        y_beacon = y_beacon(ind);
+        id_beacon = id_beacon(ind);
+    end
+    
+    options.training_points = [options.training_points; location];
     temp_map = [];
     % location 
     options.min_rssi = 0;
@@ -54,9 +61,9 @@ for i = 1:options.num_train_points
         y_temp = y_beacon(b_ind);
         
         if ~isempty(y_temp)
-            temp_map = [repmat(locations,size(y_temp,2),1) y_temp'];
+            temp_map = [repmat(location,size(y_temp,2),1) y_temp'];
         else
-            temp_map = [locations NaN];
+            temp_map = [location NaN];
         end
         
         min_rssi = min(y_temp);

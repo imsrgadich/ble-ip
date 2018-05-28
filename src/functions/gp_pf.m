@@ -67,7 +67,7 @@ pf.w  = pf.w / sum(pf.w);
 % check effective number of sample 
 pf.neff = (sum(pf.w.^2))^-1;
 
- if 1 %pf.neff > options.numSamples/10
+ if pf.neff < options.numSamples*options.epsilon
      pf.resamp = 1;
      %dbstop if infnan
      ind = resampstr(pf.w);

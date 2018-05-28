@@ -1,0 +1,123 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=1.917in,
+height=3.311in,
+at={(0.745in,0.447in)},
+scale only axis,
+xmin=-5,
+xmax=5,
+xlabel style={font=\color{white!15!black}},
+xlabel={x},
+ymin=0,
+ymax=0.4,
+ylabel style={font=\color{white!15!black}},
+ylabel={p(x)},
+axis background/.style={fill=white},
+legend style={at={(0.136,0.947)}, anchor=south west, legend columns=2, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+-5	1.4867195147343e-06\\
+-4.5	1.59837411069055e-05\\
+-4	0.000133830225764885\\
+-3.5	0.00087268269504576\\
+-3	0.00443184841193801\\
+-2.5	0.0175283004935685\\
+-2	0.0539909665131881\\
+-1.5	0.129517595665892\\
+-1	0.241970724519143\\
+-0.5	0.3520653267643\\
+0	0.398942280401433\\
+0.5	0.3520653267643\\
+1	0.241970724519143\\
+1.5	0.129517595665892\\
+2	0.0539909665131881\\
+2.5	0.0175283004935685\\
+3	0.00443184841193801\\
+3.5	0.00087268269504576\\
+4	0.000133830225764885\\
+4.5	1.59837411069055e-05\\
+5	1.4867195147343e-06\\
+};
+\addlegendentry{Target distribution}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+-5	0.00032018043441388\\
+-4.5	0.0010281859975274\\
+-4	0.00295456560795867\\
+-3.5	0.00759732401586496\\
+-3	0.0174812593958063\\
+-2.5	0.0359939776754587\\
+-2	0.0663180925284991\\
+-1.5	0.109340049783996\\
+-1	0.161313816346096\\
+-0.5	0.212965337014902\\
+0	0.251588818461995\\
+0.5	0.265961520267622\\
+1	0.251588818461995\\
+1.5	0.212965337014902\\
+2	0.161313816346096\\
+2.5	0.109340049783996\\
+3	0.0663180925284991\\
+3.5	0.0359939776754587\\
+4	0.0174812593958063\\
+4.5	0.00759732401586496\\
+5	0.00295456560795867\\
+};
+\addlegendentry{Importance Distribution}
+
+\end{axis}
+
+\begin{axis}[%
+width=1.917in,
+height=3.311in,
+at={(3.268in,0.447in)},
+scale only axis,
+xmin=-5,
+xmax=5,
+ymin=0,
+ymax=1.8,
+ylabel style={font=\color{white!15!black}},
+ylabel={weights},
+axis background/.style={fill=white}
+]
+\addplot[ycomb, color=mycolor1, mark=o, mark options={solid, mycolor1}, forget plot] table[row sep=crcr] {%
+-5	0.00464338027854786\\
+-4.5	0.0155455736076385\\
+-4	0.0452960751334778\\
+-3.5	0.114867115476897\\
+-3	0.253519973109099\\
+-2.5	0.486978701037525\\
+-2	0.814121221746333\\
+-1.5	1.1845393880994\\
+-1	1.5\\
+-0.5	1.65315788803539\\
+0	1.58569161714035\\
+0.5	1.32374535387689\\
+1	0.961770582644932\\
+1.5	0.608162800018621\\
+2	0.334695240222645\\
+2.5	0.160309973593356\\
+3	0.0668271393667346\\
+3.5	0.0242452418822488\\
+4	0.00765563983319135\\
+4.5	0.00210386460726537\\
+5	0.000503193941853768\\
+};
+\addplot[forget plot, color=white!15!black] table[row sep=crcr] {%
+-5	0\\
+5	0\\
+};
+\end{axis}
+\end{tikzpicture}%

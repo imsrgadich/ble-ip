@@ -1,0 +1,43 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.537in,
+height=3.812in,
+at={(0.761in,0.514in)},
+scale only axis,
+xmin=5,
+xmax=50,
+xlabel style={font=\color{white!15!black}},
+xlabel={Time for calibration},
+ymin=3.8,
+ymax=5.4,
+ylabel style={font=\color{white!15!black}},
+ylabel={GP-PF RMSE error},
+axis background/.style={fill=white}
+]
+\addplot [color=blue, line width=3.0pt, forget plot]
+  table[row sep=crcr]{%
+50	3.96864918478741\\
+45	3.97194773425378\\
+40	3.99828263224799\\
+35	4.03995286761442\\
+30	4.01850844538378\\
+25	4.03816593209614\\
+20	4.12532134924293\\
+15	4.17159088235819\\
+10	4.13590294382834\\
+5	5.28183874023794\\
+};
+\addplot [color=black, forget plot]
+  table[row sep=crcr]{%
+10	3.8\\
+10	5.4\\
+};
+\end{axis}
+\end{tikzpicture}%

@@ -14,7 +14,6 @@ ref_inv_dist = 1./sqrt(diag(x*x')*ones(1,size(sorted_train_data,1)) +...
      ones(size(x,1),1)*diag(sorted_train_data*sorted_train_data')' ...
      - 2*x*sorted_train_data');
 
-likelihood = sum(repmat(val',size(x,1),1) .* ref_inv_dist,2); 
-
+likelihood = sum(repmat(val',size(x,1),1) .* ref_inv_dist,2);
 
 end

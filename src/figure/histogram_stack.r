@@ -2,7 +2,7 @@
 #https://www.rdocumentation.org/packages/ggjoy/versions/0.3.0/topics/geom_ridgeline_gradient
 #https://cran.r-project.org/web/packages/ggridges/vignettes/gallery.html
 
-setwd("/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/mat_files")
+setwd("/m/cs/work/gadichs1/ip/ble-ip-helvar/mat_files/")
 
 library(ggplot2movies)
 library(ggplot2)
@@ -10,23 +10,26 @@ library(ggridges)
 library(R.matlab)
 library(hrbrthemes)
 library(tikzDevice)
+library(viridis)
+library(viridisLite)
+library(plotly)
 
 # function to limit the distance to 2 decimal places
 scaleFUN <- function(x) sprintf("%.2f", as.numeric(x))
 
 data <- readMat('r_var.mat')
 data<- as.data.frame(data)
-colnames(data) <- c("Distance (m)", "RSSI (dBm)")
-
+data  <- cbind.data.frame(Distance=data[,1],RSSI=data[,2])
+colnames(data) <- c("Luminaire distance (m)", "RSSI (dBm)")
 #scales
 mins<-min(data$`RSSI (dBm)`)
 maxs<-max(data$`RSSI (dBm)`)
 
-data  <- cbind.data.frame(Distance=data[,1],RSSI=data[,2])
 
-data$`Distance (m)` <- as.factor(data$`Distance (m)`)
+
+data$`Luminaire distance (m)` <- as.factor(data$`Luminaire distance (m)`)
  
- plot <- ggplot(data, aes(x = `RSSI (dBm)`, y = `Distance (m)`, fill = ..x.., group = `Distance (m)`)) +
+ plot <- ggplot(data, aes(x = `RSSI (dBm)`, y = `Luminaire distance (m)`, fill = ..x.., group = `Luminaire distance (m)`)) +
    geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
    scale_x_continuous(expand = c(0.01, 0)) +
    scale_y_discrete(labels=scaleFUN,expand = c(0.01, 0)) +
@@ -37,9 +40,10 @@ data$`Distance (m)` <- as.factor(data$`Distance (m)`)
    theme(axis.title.x = element_text(hjust = 0.5),
          axis.title.y = element_text(hjust = 0.5))
  
+ plot
  
- ggsave('rssi_vs_distance_density.pdf', plot = last_plot(), device = "pdf", 
-        path = "/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/figures/",
+ ggsave('rssi_vs_distance_density_sample.pdf', plot = last_plot(), device = "pdf", 
+        path = "/m/cs/work/gadichs1/ip/ble-ip-helvar/figures/",
         width = 5.39749, height=4, units = c("in"), limitsize = TRUE)
  
  #http://www.sthda.com/english/wiki/ggplot2-violin-plot-quick-start-guide-r-software-and-data-visualization
@@ -80,8 +84,155 @@ plot2 <- ggplot(data, aes(y = `RSSI (dBm)`, x = `Distance (m)`)) +
 
 plot2
 
-ggsave('rssi_vs_distance.pdf', plot = last_plot(), device = "pdf", 
-       path = "/home/imsrgadich/Documents/gitrepos/helvar/ble-ip-helvar/figures/",
+
+
+
+#1. 
+data <- readMat('r_var_rAnalyzer.mat')
+data<- as.data.frame(data)
+data  <- cbind.data.frame(Distance=data[,1],RSSI=data[,2])
+colnames(data) <- c("Luminaire distance (m)", "RSSI (dBm)")
+#scales
+mins<-min(data$`RSSI (dBm)`)
+maxs<-max(data$`RSSI (dBm)`)
+
+data$`Luminaire distance (m)` <- as.factor(data$`Luminaire distance (m)`)
+
+plot_rAnalyzer <- ggplot(data, aes(x = `RSSI (dBm)`, y = `Luminaire distance (m)`, fill = ..x.., group = `Luminaire distance (m)`)) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_y_discrete(labels=scaleFUN,expand = c(0.01, 0)) +
+  scale_fill_viridis(name = "RSSI (dBm)", option = "C") +
+  labs(title = '',
+       subtitle = 'Radio analyzer') +
+  theme_ridges(font_size = 9, grid = TRUE) + 
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_text(hjust = 0.5))
+
+#2. 
+data <- readMat('r_var_s7.mat')
+data<- as.data.frame(data)
+data  <- cbind.data.frame(Distance=data[,1],RSSI=data[,2])
+colnames(data) <- c("Luminaire distance (m)", "RSSI (dBm)")
+#scales
+mins<-min(data$`RSSI (dBm)`)
+maxs<-max(data$`RSSI (dBm)`)
+
+data$`Luminaire distance (m)` <- as.factor(data$`Luminaire distance (m)`)
+
+plot_s7 <- ggplot(data, aes(x = `RSSI (dBm)`, y = `Luminaire distance (m)`, fill = ..x.., group = `Luminaire distance (m)`)) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_y_discrete(labels=scaleFUN,expand = c(0.01, 0)) +
+  scale_fill_viridis(name = "RSSI (dBm)", option = "C") +
+  labs(title = '',
+       subtitle = 'Smartphone S7') +
+  theme_ridges(font_size = 9, grid = TRUE) #+ 
+  theme(axis.title.x = element_text(hjust = 0.5),
+        axis.title.y = element_text(hjust = 0.5))
+
+#3 
+data <- readMat('r_var_s4.mat')
+data<- as.data.frame(data)
+data  <- cbind.data.frame(Distance=data[,1],RSSI=data[,2])
+colnames(data) <- c("Luminaire distance (m)", "RSSI (dBm)")
+#scales
+mins<-min(data$`RSSI (dBm)`)
+maxs<-max(data$`RSSI (dBm)`)
+
+data$`Luminaire distance (m)` <- as.factor(data$`Luminaire distance (m)`)
+
+plot_s4 <- ggplot(data, aes(x = `RSSI (dBm)`, y = `Luminaire distance (m)`,fill = ..x.., group = `Luminaire distance (m)`)) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_y_discrete(labels=scaleFUN,expand = c(0.01, 0)) +
+  scale_fill_viridis(name = "RSSI (dBm)", option = "C") +
+  labs(title = '',
+       subtitle = 'Smartphone S4') +
+  theme_ridges(font_size = 9, grid = TRUE) + 
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+#4. 
+data <- readMat('r_var_s4mini.mat')
+data<- as.data.frame(data)
+data  <- cbind.data.frame(Distance=data[,1],RSSI=data[,2])
+colnames(data) <- c("Luminaire distance (m)", "RSSI (dBm)")
+#scales
+mins<-min(data$`RSSI (dBm)`)
+maxs<-max(data$`RSSI (dBm)`)
+
+data$`Luminaire distance (m)` <- as.factor(data$`Luminaire distance (m)`)
+
+plot_s4mini <- ggplot(data, aes(x = `RSSI (dBm)`, y = `Luminaire distance (m)`, fill = ..x.., group = `Luminaire distance (m)`)) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_y_discrete(labels=scaleFUN,expand = c(0.01, 0)) +
+  scale_fill_viridis(name = "RSSI (dBm)", option = "C") +
+  labs(title = '',
+       subtitle = 'Smartphone S4 mini') +
+  theme_ridges(font_size = 9, grid = TRUE) + 
+  theme(axis.title.x = element_text(hjust = 0.5),
+        axis.title.y = element_blank())
+
+
+multiplot(plot_rAnalyzer, plot_s7, plot_s4, plot_s4mini, cols=2)
+#subplot(plot_rAnalyzer, plot_s7, plot_s4, plot_s4mini, nrows = 2, margin = 0.05)
+
+ggsave('rssi_luminaire_distance_joyplot.pdf', plot = last_plot(), device = "pdf", 
+       path = "/m/cs/work/gadichs1/ip/ble-ip-helvar/figures",
        width = 5.39749, height=4, units = c("in"), limitsize = FALSE)
 
- 
+
+#### using tikz device of saving to tex files
+tikz(file = "../figures/rssi_luminaire_distance_joyplot.tex", width = 5.39749, height=4)
+multiplot(plot_rAnalyzer, plot_s7, plot_s4, plot_s4mini, cols=2)
+dev.off()
+
+
+# Multiple plot function
+#
+# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)
+# - cols:   Number of columns in layout
+# - layout: A matrix specifying the layout. If present, 'cols' is ignored.
+#
+# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
+# then plot 1 will go in the upper left, 2 will go in the upper right, and
+# 3 will go all the way across the bottom.
+#
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+  
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+  
+  numPlots = length(plots)
+  
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+  
+  if (numPlots==1) {
+    print(plots[[1]])
+    
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+    
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+      
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+
