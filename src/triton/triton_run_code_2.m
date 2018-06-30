@@ -36,7 +36,7 @@ rmse = @(x,y) sqrt(mean(sum((x - y).^2,2),1));
 
 % Lock random seed
 rng(2,'twister');
-N_seeds = 100;
+N_seeds = 1;
 seeds = round(10^5*rand(N_seeds,1));
 
 % Set the basics for the filtering
@@ -72,6 +72,7 @@ for i = 1:N_seeds
     
     % filtering starts
     for j = 2: size(y,1)
+        sprintf('MC interation %d, step %d',i,j)
         options.dt = time(j,1) - time(j-1,1);
         
         %% particle filter
