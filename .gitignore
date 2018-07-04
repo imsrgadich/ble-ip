@@ -2,3 +2,4 @@ src/common/*.m~
 src/data_analysis/*.m~
 .gitignore
 triton_files/workspace/*
+src/triton/*.m~
