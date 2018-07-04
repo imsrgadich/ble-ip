@@ -5,11 +5,11 @@ rmse_1 = @(x,y) sqrt(mean(sum((x - y).^2,2),1));
 
 %cd file_location;
 
-for num_file=1:numel(dir('*.mat'))  % number of elements in the directory
+for num_file=1:size(dir([file_location '/*.mat']),1) % number of elements in the directory
     clearvars -except num_file rmse rmse_all_pf rmse_pf train_points...
            rmse_all_ukf rmse_ukf rmse_pf_var rmse_ukf_var rmse_1 file_location;
     load([file_location '/' num2str(num_file) '.mat']);
-    load('/m/cs/work/gadichs1/ip/ble-ip-helvar/mat_files/test_files/test_data_new.mat')
+    load('/Users/srikanth.gadicherla/Documents/gitrepos/helvar/ble-ip-helvar/mat_files/test_files/test_data_new.mat')
     
     if size(m_PF,1) == 885
         m_true = m_true(1:885,:);
