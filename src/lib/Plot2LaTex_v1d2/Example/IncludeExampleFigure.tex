@@ -1,0 +1,29 @@
+\documentclass[10pt]{article}
+\usepackage{verbatim}
+\usepackage{graphicx} % graphics
+\usepackage{color}
+%\usepackage{siunits}
+%\usepackage{amsmath}
+%\usepackage{bm}
+
+\begin{document}
+% Document to show the result of the Plot2LaTeX demo.
+%
+% Installation
+%1. Include Plot2LaTeX.m to matlab search path.
+%2. Make sure Inkscape is installed correctly and installation folder is specified correctly in Plot2LaTeX.m
+%3. Use pdfLatex output profile
+%
+% Save figure
+% 1. Generate Matlab figure using GenerateDemoFig
+% 2. Save figure in Matlab using Plot2LaTeX( h, 'DemoFig' ) 
+% 3. Compile document using this tex document.
+%
+% From more help refer to:
+% ftp://ftp.fu-berlin.de/tex/CTAN/info/svg-inkscape/InkscapePDFLaTeX.pdf
+
+\begin{figure}[!h]
+	\input{"ExampleFigure.pdf_tex"} % specify figure name
+\end{figure}
+
+\end{document}

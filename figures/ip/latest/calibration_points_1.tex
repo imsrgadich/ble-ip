@@ -1,0 +1,121 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.951\fwidth,
+height=0.67\fwidth,
+at={(0\fwidth,0\fwidth)},
+scale only axis,
+xmin=0,
+xmax=70,
+xlabel style={font=\color{white!15!black}},
+xlabel={Number of Calibration points},
+ymin=0,
+ymax=60,
+ylabel style={font=\color{white!15!black}},
+ylabel={RMSE error},
+axis background/.style={fill=white},
+legend style={at={(0.789,0.805)}, anchor=south west, legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, line width=1.2pt]
+  table[row sep=crcr]{%
+63	3.51512050047555\\
+57	3.33575343578551\\
+51	3.51953220556447\\
+45	3.13151405884889\\
+39	3.28550282357298\\
+33	3.34956883737916\\
+27	3.55939649283266\\
+21	3.57770499024995\\
+18	3.58189817227551\\
+15	3.56547940295125\\
+12	3.4098665664031\\
+6	12.4334802472699\\
+};
+\addlegendentry{ukf}
+
+\addplot [color=mycolor2, line width=1.2pt]
+  table[row sep=crcr]{%
+63	2.76827094484282\\
+57	2.7689197414884\\
+51	2.73447998697458\\
+45	2.77180525035959\\
+39	2.79356190577067\\
+33	2.78446808469339\\
+27	3.08858269335879\\
+21	3.06068185713693\\
+18	3.11279605665676\\
+15	3.0117154810772\\
+12	2.93347413240386\\
+6	4.83360742343859\\
+};
+\addlegendentry{pf}
+
+\addplot [color=mycolor3, line width=1.2pt]
+  table[row sep=crcr]{%
+63	3.09592397467226\\
+57	3.09522002604573\\
+51	3.0748407225424\\
+45	3.4041708955126\\
+39	57.0920911638759\\
+33	3.4871528536148\\
+27	4.03347542706518\\
+21	3.92806000412911\\
+18	3.49392742240574\\
+15	3.31185450614798\\
+12	31.8691715752649\\
+6	19.046307865314\\
+};
+\addlegendentry{ukf old}
+
+\addplot [color=mycolor4, line width=1.2pt]
+  table[row sep=crcr]{%
+63	3.10291867895511\\
+57	3.07189297728609\\
+51	3.02965457633373\\
+45	3.01975090302094\\
+39	3.12796875039343\\
+33	3.22264106589906\\
+27	3.33428177260623\\
+21	3.4663596083161\\
+18	4.0027416530752\\
+15	4.6929895475594\\
+12	37.340369711465\\
+6	22.3906803665673\\
+};
+\addlegendentry{pf old}
+
+\end{axis}
+
+\begin{axis}[%
+width=1.227\fwidth,
+height=0.822\fwidth,
+at={(-0.16\fwidth,-0.089\fwidth)},
+scale only axis,
+xmin=0,
+xmax=1,
+ymin=0,
+ymax=1,
+axis line style={draw=none},
+ticks=none,
+axis x line*=bottom,
+axis y line*=left,
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=black, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.295546558704453	0.923547400611621\\
+0.295877122069523	0.107033639143731\\
+};
+\end{axis}
+\end{tikzpicture}%
