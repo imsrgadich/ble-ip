@@ -3,3 +3,5 @@ src/data_analysis/*.m~
 .gitignore
 triton_files/workspace/*
 src/triton/*.m~
+.DS_Store
+src/.DS_Store
