@@ -25,7 +25,7 @@ xlim([-100 -60])
 cdfplot(y_8b32_s4), hold on
 cdfplot(y_8b32_s4mini)
 title('8B32: S4 vs S4 mini')
-_s4xlabel('')
+xlabel('')
 
 subplot(7,3,13), hold on
 xlim([-100 -60])
@@ -288,9 +288,7 @@ mean(y_8af4_s4mini),
 mean(y_8b32_s4mini),
 mean(y_8b44_s4mini),
 mean(y_8cd1_s4mini),
-mean(y_8ca0_s4mini)]
--
-[mean(y_8b3f_nex5),
+mean(y_8ca0_s4mini)]-[mean(y_8b3f_nex5),
 mean(y_8af5_nex5),
 mean(y_8af4_nex5),
 mean(y_8b32_nex5),

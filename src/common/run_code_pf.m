@@ -3,7 +3,7 @@ clf;
 
 %% load the parameters from GP regression training.
 
-load('../../mat_files/code_param/options_old_ref_1.mat')
+load('../../mat_files/code_param/options_new_ref_1.mat')
 load('../../mat_files/test_files/test_data.mat')
 
 %% Switch to select measurement model
@@ -67,7 +67,7 @@ done = false;
 %% Get the test data
 %testData = test_data{3};
 % [~,time,id,y] = get_test_data(options);
-load('/m/cs/work/gadichs1/ip/ble-ip-helvar/mat_files/test_files/test_data_new.mat')
+load('../../mat_files/test_files/test_data_new.mat')
 % testData = test_data{3};
 % tt = [1:size(testData,1)]';
 % idd = repmat([1:options.num_beacons]+2,size(testData,1),1);
@@ -137,7 +137,7 @@ switch options.method
         
         %% start the filtering
         figure, hold on
-
+        
          for j = 2: size(testData,1)
             % send in previosu mean, covariance and other options.
             options.dt = tt(j,1) - tt(j-1,1);
@@ -160,13 +160,15 @@ switch options.method
         % Particle Filter for N_seeds iterations
         % Check the filter for various # of paricles.
         options.epsilon = 0.5;
-        im= imread('../../images/floorplan.png');
+        x_bias = 61.2031;
+        y_bias = 60.8977;
+        im= imread('../../images/floorplan/floorplan.png');
         figure, image(im), hold on
         temp_m = [1958.5-(m_F(1,2)*61.2031),913.4651-(m_F(1,1)*60.8977)];
-        pos = [temp_m(1)-2*3*61.2031,...
-               temp_m(2)-2*3*60.8977,...
-               4*3*61.2031,...
-               4*3*60.8977];
+        pos = [temp_m(1)-2*3*x_bias,...
+               temp_m(2)-2*3*y_bias,...
+               4*3*x_bias,...
+               4*3*y_bias];
         rectangle('Position',pos,'Curvature',[1 1],'FaceColor',[0,1,1],'EdgeColor','w',...
                         'LineWidth',3), hold on
         plot(temp_m(1),temp_m(2),'.','Color',[0,0.5,1],'MarkerSize',40), hold on
@@ -193,9 +195,10 @@ switch options.method
                 neff(j) = pf.neff;
                 w = pf.w;
                 
-                if tt(j) - i > 1
+                if tt(j) - i > 0.75
                     % transforming the means to plot coordinates.
-                    temp_m = [1958.5-(temp_m(:,2)*61.2031),913.4651-(temp_m(:,1)*60.8977)];
+                    temp_m = [1957-(temp_m(:,2)*(1917/33.6)),891-(temp_m(:,1)*(891/15.38))];
+                    %temp_m = [1958.5-(temp_m(:,2)*61.2031),913.4651-(temp_m(:,1)*60.8977)];
                     temp_avg_mean = mean(temp_m,1);
                     mean_std = std(temp_m,0,1);
                     % Clear of the previous point and then plot the next
@@ -231,7 +234,7 @@ end
 
 %figure,scatter(m_F(:,1),m_F(:,2))
 
-rmse_pf = squeeze(rmse_1(m_true_augm,m_UKF(:,1:2,:)));
+%rmse_pf = squeeze(rmse_1(m_true_augm,m_UKF(:,1:2,:)));
 
-path_string = sprintf('/m/cs/work/gadichs1/ip/ble-ip-helvar/mat_files/testing_positioning/pf_gp_1.mat');
-save(path_string)
+%path_string = sprintf('/m/cs/work/gadichs1/ip/ble-ip-helvar/mat_files/testing_positioning/pf_gp_1.mat');
+%save(path_string)

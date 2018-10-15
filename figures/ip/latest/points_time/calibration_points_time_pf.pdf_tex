@@ -1,0 +1,106 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'calibration_points_time_pf.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{933.75bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.56626506)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{calibration_points_time_pf.pdf}}%
+    \put(0.14272289,0.05100402){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.17274699,0.05100402){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.20277108,0.05100402){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.23279518,0.05100402){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.26040964,0.05100402){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.29043373,0.05100402){\makebox(0,0)[lb]{\smash{12}}}%
+    \put(0.32045783,0.05100402){\makebox(0,0)[lb]{\smash{14}}}%
+    \put(0.35048193,0.05100402){\makebox(0,0)[lb]{\smash{16}}}%
+    \put(0.38050602,0.05100402){\makebox(0,0)[lb]{\smash{18}}}%
+    \put(0.41053012,0.05100402){\makebox(0,0)[lb]{\smash{20}}}%
+    \put(0.44055422,0.05100402){\makebox(0,0)[lb]{\smash{22}}}%
+    \put(0.47057831,0.05100402){\makebox(0,0)[lb]{\smash{24}}}%
+    \put(0.50060241,0.05100402){\makebox(0,0)[lb]{\smash{26}}}%
+    \put(0.53062651,0.05100402){\makebox(0,0)[lb]{\smash{28}}}%
+    \put(0.5606506,0.05100402){\makebox(0,0)[lb]{\smash{30}}}%
+    \put(0.5906747,0.05100402){\makebox(0,0)[lb]{\smash{32}}}%
+    \put(0.6206988,0.05100402){\makebox(0,0)[lb]{\smash{34}}}%
+    \put(0.65072289,0.05100402){\makebox(0,0)[lb]{\smash{36}}}%
+    \put(0.68074699,0.05100402){\makebox(0,0)[lb]{\smash{38}}}%
+    \put(0.71077108,0.05100402){\makebox(0,0)[lb]{\smash{40}}}%
+    \put(0.74079518,0.05100402){\makebox(0,0)[lb]{\smash{42}}}%
+    \put(0.77081928,0.05100402){\makebox(0,0)[lb]{\smash{44}}}%
+    \put(0.80084337,0.05100402){\makebox(0,0)[lb]{\smash{46}}}%
+    \put(0.83086755,0.05100402){\makebox(0,0)[lb]{\smash{48}}}%
+    \put(0.86089165,0.05100402){\makebox(0,0)[lb]{\smash{50}}}%
+    \put(0.45401639,0.03935743){\makebox(0,0)[lb]{\smash{Calibration time (seconds)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{calibration_points_time_pf.pdf}}%
+    \put(0.12208835,0.50165663){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.11726908,0.46320281){\makebox(0,0)[lb]{\smash{12}}}%
+    \put(0.11726908,0.424749){\makebox(0,0)[lb]{\smash{15}}}%
+    \put(0.11726908,0.38629518){\makebox(0,0)[lb]{\smash{18}}}%
+    \put(0.11726908,0.34784137){\makebox(0,0)[lb]{\smash{21}}}%
+    \put(0.11726908,0.30938755){\makebox(0,0)[lb]{\smash{27}}}%
+    \put(0.11726908,0.27093373){\makebox(0,0)[lb]{\smash{33}}}%
+    \put(0.11726908,0.23247992){\makebox(0,0)[lb]{\smash{39}}}%
+    \put(0.11726908,0.1940261){\makebox(0,0)[lb]{\smash{45}}}%
+    \put(0.11726908,0.15557229){\makebox(0,0)[lb]{\smash{51}}}%
+    \put(0.11726908,0.11711847){\makebox(0,0)[lb]{\smash{57}}}%
+    \put(0.11726908,0.07866466){\makebox(0,0)[lb]{\smash{63}}}%
+    \put(0.11285141,0.25803237){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Calibration points}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{calibration_points_time_pf.pdf}}%
+    \put(0.90787149,0.05943775){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.90787149,0.11228008){\makebox(0,0)[lb]{\smash{3.2}}}%
+    \put(0.90787149,0.16512249){\makebox(0,0)[lb]{\smash{3.4}}}%
+    \put(0.90787149,0.21796482){\makebox(0,0)[lb]{\smash{3.6}}}%
+    \put(0.90787149,0.27080715){\makebox(0,0)[lb]{\smash{3.8}}}%
+    \put(0.90787149,0.32364948){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.90787149,0.37649181){\makebox(0,0)[lb]{\smash{4.2}}}%
+    \put(0.90787149,0.42933414){\makebox(0,0)[lb]{\smash{4.4}}}%
+    \put(0.90787149,0.48217655){\makebox(0,0)[lb]{\smash{4.6}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{calibration_points_time_pf.pdf}}%
+    \put(0.93398487,0.29782886){\color[rgb]{0,0,0}\rotatebox{-90}{\makebox(0,0)[lb]{\smash{RMSE}}}}%
+  \end{picture}%
+\endgroup%

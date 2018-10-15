@@ -105,7 +105,7 @@ function Plot2LaTeX( h, filename, options )
 
 %% Config and checks
 %   Specify location of your inkscape installation
-DIR_INKSC = 'c:\Program Files (x86)\Inkscape\Inkscape.exe'; 
+DIR_INKSC = '/Applications/Inkscape.app/Contents/MacOS/Inkscape';
 
 % initize waitbar
 nStep = 5; Step = 0; 

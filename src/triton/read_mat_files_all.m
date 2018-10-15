@@ -8,7 +8,8 @@ rmse_1 = @(x,y) sqrt(mean(sum((x - y).^2,2),1));
 
 load('/Users/srikanth.gadicherla/Documents/gitrepos/helvar/ble-ip-helvar/mat_files/test_files/test_data_new.mat')
 
-count = 1;
+count = 300;
+
 
 for calib_points = 1:12
     for calib_time = 1:25 % number of elements in the directory
@@ -34,7 +35,7 @@ for calib_points = 1:12
         time_points_calib(calib_points,calib_time,:) = [options.time_calib,
                                                      options.num_train_points,
                                                      length(y)];
-        count = count+1;
+        count = count-1; 
     end
 end
 
@@ -57,8 +58,9 @@ colorMap = jet(256);
 colormap(colorMap);   % Apply the colormap
 colormap(flipud(hot))
 caxis([3, 4.7465]);
-xlabel('Calibration points')
-ylabel('Calibration time')
-
-
+xlabel('Calibration time (seconds)')
+ylabel('Calibration points')
+ax = gca;
+ax.XData = ["2" "4" "6" "8" "10" "12" "14" "16" "18" "20" "22" "24" "26" "28" "30" "32" "34" "36" "38" "40" "42" "44" "46" "48" "50"];
+ax.YData = ["6" "12" "15" "18" "21" "27" "33" "39" "45" "51" "57" "63"];
 end

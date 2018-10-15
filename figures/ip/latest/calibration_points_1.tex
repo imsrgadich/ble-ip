@@ -13,8 +13,8 @@
 
 \begin{axis}[%
 width=0.951\fwidth,
-height=0.67\fwidth,
-at={(0\fwidth,0\fwidth)},
+height=\fheight,
+at={(0\fwidth,0\fheight)},
 scale only axis,
 xmin=0,
 xmax=70,
@@ -23,9 +23,9 @@ xlabel={Number of Calibration points},
 ymin=0,
 ymax=60,
 ylabel style={font=\color{white!15!black}},
-ylabel={RMSE error},
+ylabel={RMSE},
 axis background/.style={fill=white},
-legend style={at={(0.789,0.805)}, anchor=south west, legend cell align=left, align=left, draw=white!15!black}
+legend style={at={(0.789,0.812)}, anchor=south west, legend cell align=left, align=left, draw=white!15!black}
 ]
 \addplot [color=mycolor1, line width=1.2pt]
   table[row sep=crcr]{%
@@ -99,8 +99,8 @@ legend style={at={(0.789,0.805)}, anchor=south west, legend cell align=left, ali
 
 \begin{axis}[%
 width=1.227\fwidth,
-height=0.822\fwidth,
-at={(-0.16\fwidth,-0.089\fwidth)},
+height=1.227\fheight,
+at={(-0.16\fwidth,-0.133\fheight)},
 scale only axis,
 xmin=0,
 xmax=1,
@@ -112,7 +112,7 @@ axis x line*=bottom,
 axis y line*=left,
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
-\addplot [color=black, line width=2.0pt, forget plot]
+\addplot [color=black, dashed, line width=2.0pt, forget plot]
   table[row sep=crcr]{%
 0.295546558704453	0.923547400611621\\
 0.295877122069523	0.107033639143731\\

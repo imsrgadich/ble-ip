@@ -12,7 +12,7 @@ function options = gp_regression_beacon(options)
 %load('/home/imsrgadich/Documents/gitrepos/aalto/indoor_position_fingerprint/data/helvar_rd/locations.mat')
 % load('../data/aalto_kwarkki/reference_map/reference_map_updated.mat')
 % reference_map = reference_map_updated;
-options.training_file_location = '/m/cs/work/gadichs1/ip/ble-ip-helvar/triton_files/calibration_data/';
+options.training_file_location = '../../triton_files/calibration_data/';
 options.num_train_points = length(options.file_nums);
 options.num_beacons = 28; % this is constant
 options.max_id_beacon = 30; % this is also constant

@@ -12,20 +12,21 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=6.469in,
-height=5.23in,
-at={(1.085in,0.706in)},
+width=0.951\fwidth,
+height=\fheight,
+at={(0\fwidth,0\fheight)},
 scale only axis,
 xmin=0,
 xmax=50,
+xtick={0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50},
 xlabel style={font=\color{white!15!black}},
-xlabel={Time for calibration},
+xlabel={Calibration time},
 ymin=0,
 ymax=80,
 ylabel style={font=\color{white!15!black}},
 ylabel={RMSE error},
 axis background/.style={fill=white},
-legend style={legend columns=4, legend cell align=left, align=left, draw=white!15!black}
+legend style={at={(0.771,0.669)}, anchor=south west, legend cell align=left, align=left, draw=white!15!black}
 ]
 \addplot [color=mycolor1, line width=1.2pt]
   table[row sep=crcr]{%
@@ -55,7 +56,7 @@ legend style={legend columns=4, legend cell align=left, align=left, draw=white!1
 4	3.1145954748254\\
 2	3.41016378956306\\
 };
-\addlegendentry{ukf}
+\addlegendentry{UKF-2}
 
 \addplot [color=mycolor2, line width=1.2pt]
   table[row sep=crcr]{%
@@ -85,7 +86,7 @@ legend style={legend columns=4, legend cell align=left, align=left, draw=white!1
 4	3.20476673226866\\
 2	37.3279291640408\\
 };
-\addlegendentry{pf}
+\addlegendentry{PF-2}
 
 \addplot [color=mycolor3, line width=1.2pt]
   table[row sep=crcr]{%
@@ -115,7 +116,7 @@ legend style={legend columns=4, legend cell align=left, align=left, draw=white!1
 4	3.47054116264012\\
 2	5.0008582557989\\
 };
-\addlegendentry{ukf (old)}
+\addlegendentry{UKF-1}
 
 \addplot [color=mycolor4, line width=1.2pt]
   table[row sep=crcr]{%
@@ -145,7 +146,29 @@ legend style={legend columns=4, legend cell align=left, align=left, draw=white!1
 4	3.52249245255239\\
 2	32.8778718803262\\
 };
-\addlegendentry{pf (old)}
+\addlegendentry{PF-1}
 
+\end{axis}
+
+\begin{axis}[%
+width=1.227\fwidth,
+height=1.227\fheight,
+at={(-0.16\fwidth,-0.135\fheight)},
+scale only axis,
+xmin=0,
+xmax=1,
+ymin=0,
+ymax=1,
+axis line style={draw=none},
+ticks=none,
+axis x line*=bottom,
+axis y line*=left,
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=black, dashed, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+0.1921875	0.107203498842295\\
+0.1921875	0.925250836120401\\
+};
 \end{axis}
 \end{tikzpicture}%
